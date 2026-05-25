@@ -1,61 +1,69 @@
 //
 //  ContentView.swift
-//  VaptVupt
+//  SnapChef
 //
-//  Created by Leandro Henrique Cavalcanti Bernardes on 24/05/26.
+//  Container raiz com TabView. Abas:
+//   - Início (Dashboard)
+//   - Adicionar (abre Upload Inteligente em sheet)
+//   - Ajustes (aparência, notificações, histórico)
 //
 
 import SwiftUI
 import SwiftData
 
-struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
+struct RootTabView: View {
+    @Bindable var dashboardViewModel: DashboardViewModel
+
+    @State private var selectedTab: Tab = .home
+    @State private var isUploadPresented: Bool = false
+
+    enum Tab: Hashable {
+        case home
+        case upload
+        case settings
+    }
 
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-                    }
+        TabView(selection: $selectedTab) {
+            DashboardView(viewModel: dashboardViewModel)
+                .tabItem {
+                    Label("Início", systemImage: "house.fill")
                 }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-        } detail: {
-            Text("Select an item")
-        }
-    }
+                .tag(Tab.home)
 
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
+            // Aba central — abre upload via sheet, mantendo a tab no Home.
+            Color.clear
+                .tabItem {
+                    Label("Adicionar", systemImage: "plus.circle.fill")
+                }
+                .tag(Tab.upload)
 
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
+            SettingsView()
+                .tabItem {
+                    Label("Ajustes", systemImage: "gearshape.fill")
+                }
+                .tag(Tab.settings)
+        }
+        .onChange(of: selectedTab) { _, newValue in
+            if newValue == .upload {
+                isUploadPresented = true
+                selectedTab = .home
             }
+        }
+        .sheet(isPresented: $isUploadPresented) {
+            UploadRecipeView(
+                viewModel: UploadRecipeViewModel(onSave: { recipe in
+                    dashboardViewModel.append(recipe: recipe)
+                })
+            )
         }
     }
 }
 
 #Preview {
-    ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
+    RootTabView(dashboardViewModel: DashboardViewModel())
+        .environment(FavoritesStore())
+        .environment(NotificationService())
+        .environment(PantryStore())
+        .modelContainer(for: CookedRecipeEntry.self, inMemory: true)
 }

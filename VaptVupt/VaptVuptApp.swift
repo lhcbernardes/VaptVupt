@@ -1,8 +1,10 @@
 //
 //  VaptVuptApp.swift
-//  VaptVupt
+//  SnapChef
 //
-//  Created by Leandro Henrique Cavalcanti Bernardes on 24/05/26.
+//  Entry-point do app. Mantém estados globais (Dashboard, Favoritos,
+//  Notificações) vivos durante toda a sessão e instala o `ModelContainer`
+//  do SwiftData para o histórico de preparos.
 //
 
 import SwiftUI
@@ -10,23 +12,34 @@ import SwiftData
 
 @main
 struct VaptVuptApp: App {
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Item.self,
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
+    @State private var dashboardViewModel = DashboardViewModel()
+    @State private var favoritesStore = FavoritesStore()
+    @State private var notificationService = NotificationService()
+    @State private var pantryStore = PantryStore()
+
+    @AppStorage("snapchef.appearance") private var appearance: AppearanceMode = .system
+
+    /// Container SwiftData usado para o histórico de preparos
+    /// (`CookedRecipeEntry`). Os erros são fatais aqui porque o app não
+    /// é capaz de funcionar de forma consistente sem persistência.
+    private let modelContainer: ModelContainer = {
         do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+            return try ModelContainer(for: CookedRecipeEntry.self)
         } catch {
-            fatalError("Could not create ModelContainer: \(error)")
+            fatalError("Falha ao iniciar o ModelContainer do SwiftData: \(error)")
         }
     }()
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootTabView(dashboardViewModel: dashboardViewModel)
+                .environment(favoritesStore)
+                .environment(notificationService)
+                .environment(pantryStore)
+                .modelContainer(modelContainer)
+                .tint(Theme.Colors.accent)
+                .preferredColorScheme(appearance.colorScheme)
         }
-        .modelContainer(sharedModelContainer)
     }
 }
