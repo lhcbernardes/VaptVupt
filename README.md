@@ -248,16 +248,34 @@ xcodebuild test -scheme VaptVupt -destination 'platform=iOS Simulator,name=iPhon
 
 ## Roadmap
 
-Itens planejados para próximas iterações — ver [Avaliação de aprimoramentos](#avaliação-de-aprimoramentos) abaixo:
+Implementado:
 
-- [ ] **Mãos livres**: Proximity Sensor + Speech framework para navegar passos sem tocar na tela.
-- [ ] **Live Activity / Dynamic Island** do timer via ActivityKit.
-- [ ] **VisionKit DataScanner** na Despensa para captura por câmera.
+- [x] **Feedback háptico** via `.sensoryFeedback` em favoritos (`RecipeCard`, `RecipeDetailView`), Despensa, estado da IA no Upload e Modo Cozinha (troca de passo, timer iniciado, timer zerado).
+- [x] **Proximity Sensor** (`ProximityObserver`) integrado ao Modo Cozinha — passe a mão por cima da câmera frontal para avançar o passo.
+- [x] **Comandos de voz** (`VoiceCommandRecognizer` com `SFSpeechRecognizer` pt-BR) — "próximo", "voltar", "pausar", "continuar", "iniciar", "cancelar".
+- [x] **ActivityKit / Live Activity** do timer: `CookingActivityAttributes` + integração em `CookingTimerController` (start / update / end).
+- [x] **VisionKit DataScanner** (`PantryScannerView`) na Despensa para captura de rótulos pela câmera.
+
+Pendentes:
+
+- [ ] **Widget Extension** (WidgetKit + SwiftData) com Receita do Dia e favoritos na Homescreen — requer App Group entitlement.
+- [ ] **UI do Live Activity Widget** — `ActivityConfiguration<CookingActivityAttributes>` precisa ser implementada num Widget Extension target.
 - [ ] **App Clips** para compartilhamento de receitas.
-- [ ] **Widgets** (WidgetKit + SwiftData) com Receita do Dia e favoritos na Homescreen.
-- [ ] **Feedback háptico** via `.sensoryFeedback` em favoritos, timer e parsing concluído.
 - [ ] Backend real (Firebase / Supabase) substituindo `UserDefaults` para favoritos/despensa.
 - [ ] Integração de LLM real no `RecipeAIService` (Gemini / Claude / GPT).
+
+### Configuração necessária no Xcode
+
+Para que os novos recursos funcionem em runtime, adicione no Info.plist do target:
+
+| Chave | Valor | Recurso |
+|---|---|---|
+| `NSSpeechRecognitionUsageDescription` | "Usamos reconhecimento de fala para você controlar a receita por voz." | Comandos de voz |
+| `NSMicrophoneUsageDescription` | "O microfone é usado para os comandos de voz no Modo Cozinha." | Comandos de voz |
+| `NSCameraUsageDescription` | "A câmera é usada para escanear rótulos e adicionar à sua despensa." | DataScanner |
+| `NSSupportsLiveActivities` | `YES` | Live Activity do timer |
+
+Para a UI do Widget e da Live Activity, adicione um novo target **Widget Extension** (File → New → Target) e marque `CookingActivityAttributes.swift` como membro também desse target.
 
 ---
 

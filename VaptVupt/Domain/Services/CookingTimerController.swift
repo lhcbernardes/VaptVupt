@@ -8,6 +8,7 @@
 //  caso do usuário sair do app ou bloquear a tela.
 //
 
+import ActivityKit
 import Foundation
 
 @Observable
@@ -27,6 +28,7 @@ final class CookingTimerController {
 
     private var timer: Timer?
     private var activeStepNumber: Int = 0
+    private var liveActivity: Activity<CookingActivityAttributes>?
 
     // MARK: - Derived
 
@@ -83,6 +85,8 @@ final class CookingTimerController {
             recipeTitle: recipeTitle,
             stepNumber: stepNumber
         )
+
+        startLiveActivity(stepNumber: stepNumber)
     }
 
     func togglePauseResume() {
@@ -98,6 +102,7 @@ final class CookingTimerController {
         totalSeconds = 0
         remainingSeconds = 0
         notificationService?.cancelTimerNotification()
+        endLiveActivity()
     }
 
     // MARK: - Internal
@@ -109,6 +114,7 @@ final class CookingTimerController {
         // Pausamos a notificação local para evitar disparo enquanto pausado.
         // Será reagendada com o tempo restante ao retomar.
         notificationService?.cancelTimerNotification()
+        updateLiveActivity(isPaused: true)
     }
 
     private func resume() {
@@ -125,6 +131,7 @@ final class CookingTimerController {
                 stepNumber: activeStepNumber
             )
         }
+        updateLiveActivity(isPaused: false)
     }
 
     private func scheduleTick() {
@@ -142,5 +149,70 @@ final class CookingTimerController {
         timer = nil
         isRunning = false
         // Notificação já dispara via UNUserNotificationCenter no momento certo.
+        endLiveActivity()
+    }
+
+    // MARK: - Live Activity
+
+    /// Inicia uma Live Activity para o timer atual. Usa `endDate` como fonte
+    /// de verdade — a UI do widget desenha a contagem sozinha via
+    /// `Text(timerInterval:)`, então o app não precisa atualizar a cada segundo.
+    private func startLiveActivity(stepNumber: Int) {
+        guard ActivityAuthorizationInfo().areActivitiesEnabled else { return }
+
+        let attributes = CookingActivityAttributes(
+            recipeTitle: recipeTitle,
+            stepNumber: stepNumber
+        )
+        let state = CookingActivityAttributes.ContentState(
+            endDate: Date().addingTimeInterval(TimeInterval(remainingSeconds)),
+            totalSeconds: totalSeconds,
+            isPaused: false,
+            pausedRemainingSeconds: nil
+        )
+
+        do {
+            liveActivity = try Activity.request(
+                attributes: attributes,
+                content: ActivityContent(state: state, staleDate: nil),
+                pushType: nil
+            )
+        } catch {
+            liveActivity = nil
+        }
+    }
+
+    /// Atualiza apenas o estado de pausa — recalcula `endDate` quando retoma.
+    private func updateLiveActivity(isPaused: Bool) {
+        guard let liveActivity else { return }
+
+        let newState: CookingActivityAttributes.ContentState
+        if isPaused {
+            newState = CookingActivityAttributes.ContentState(
+                endDate: Date().addingTimeInterval(TimeInterval(remainingSeconds)),
+                totalSeconds: totalSeconds,
+                isPaused: true,
+                pausedRemainingSeconds: remainingSeconds
+            )
+        } else {
+            newState = CookingActivityAttributes.ContentState(
+                endDate: Date().addingTimeInterval(TimeInterval(remainingSeconds)),
+                totalSeconds: totalSeconds,
+                isPaused: false,
+                pausedRemainingSeconds: nil
+            )
+        }
+
+        Task {
+            await liveActivity.update(ActivityContent(state: newState, staleDate: nil))
+        }
+    }
+
+    private func endLiveActivity() {
+        guard let liveActivity else { return }
+        Task {
+            await liveActivity.end(nil, dismissalPolicy: .immediate)
+        }
+        self.liveActivity = nil
     }
 }

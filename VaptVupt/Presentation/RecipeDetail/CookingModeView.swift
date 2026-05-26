@@ -23,11 +23,30 @@ struct CookingModeView: View {
 
     @State private var currentIndex: Int = 0
     @State private var timerController = CookingTimerController()
+    @State private var proximityObserver = ProximityObserver()
+    @State private var voiceRecognizer = VoiceCommandRecognizer()
     @State private var didRecordHistory = false
+    @State private var isHandsFreeEnabled: Bool = true
+    @State private var isVoiceEnabled: Bool = false
 
     private var steps: [Step] { recipe.steps }
 
     var body: some View {
+        rootStack
+            .modifier(CookingModeLifecycle(
+                isTimerActive: timerController.isActive,
+                currentIndex: currentIndex,
+                remainingSeconds: timerController.remainingSeconds,
+                proximityTrigger: proximityObserver.triggerCount,
+                voiceTrigger: voiceRecognizer.triggerCount,
+                onAppearSetup: onAppearSetup,
+                onTeardown: teardown,
+                onProximityTrigger: advanceStep,
+                onVoiceTrigger: handleVoiceCommand
+            ))
+    }
+
+    private var rootStack: some View {
         ZStack(alignment: .top) {
             Theme.Colors.background.ignoresSafeArea()
 
@@ -41,11 +60,38 @@ struct CookingModeView: View {
                 pagination
             }
         }
-        .animation(.spring(response: 0.4, dampingFraction: 0.8), value: timerController.isActive)
-        .onAppear { onAppearSetup() }
-        .onDisappear {
-            UIApplication.shared.isIdleTimerDisabled = false
-            timerController.cancel()
+    }
+
+    private func teardown() {
+        UIApplication.shared.isIdleTimerDisabled = false
+        timerController.cancel()
+        proximityObserver.stop()
+        voiceRecognizer.stop()
+    }
+
+    private func advanceStep() {
+        guard isHandsFreeEnabled, currentIndex < steps.count - 1 else { return }
+        withAnimation { currentIndex += 1 }
+    }
+
+    private func goToPreviousStep() {
+        guard currentIndex > 0 else { return }
+        withAnimation { currentIndex -= 1 }
+    }
+
+    private func handleVoiceCommand() {
+        guard let command = voiceRecognizer.lastCommand else { return }
+        switch command {
+        case .next:     advanceStep()
+        case .previous: goToPreviousStep()
+        case .pause:    if timerController.isRunning { timerController.togglePauseResume() }
+        case .resume:   if !timerController.isRunning, timerController.isActive { timerController.togglePauseResume() }
+        case .start:
+            let step = steps[currentIndex]
+            if let minutes = CookingTimerController.detectMinutes(in: step.instruction) {
+                timerController.start(minutes: minutes, stepID: step.id, stepNumber: step.sequence)
+            }
+        case .cancel:   timerController.cancel()
         }
     }
 
@@ -57,6 +103,11 @@ struct CookingModeView: View {
         // Configura o controlador para integrar notificações locais.
         timerController.notificationService = notifications
         timerController.recipeTitle = recipe.title
+
+        // Liga o sensor de proximidade para navegação "mãos livres".
+        if isHandsFreeEnabled {
+            proximityObserver.start()
+        }
 
         // Pede permissão de notificação (se ainda não decidido).
         Task { await notifications.requestPermissionIfNeeded() }
@@ -84,6 +135,8 @@ struct CookingModeView: View {
                     .lineLimit(1)
             }
             Spacer()
+            voiceToggle
+            handsFreeToggle
             Button {
                 dismiss()
             } label: {
@@ -96,6 +149,51 @@ struct CookingModeView: View {
             .buttonStyle(.plain)
         }
         .padding(Theme.Spacing.md)
+    }
+
+    /// Toggle do reconhecimento de voz — diga "próximo", "voltar", "pausar"
+    /// etc. para controlar o Modo Cozinha sem encostar no telefone.
+    private var voiceToggle: some View {
+        Button {
+            if isVoiceEnabled {
+                voiceRecognizer.stop()
+                isVoiceEnabled = false
+            } else {
+                isVoiceEnabled = true
+                Task { await voiceRecognizer.start() }
+            }
+        } label: {
+            Image(systemName: isVoiceEnabled ? "mic.fill" : "mic.slash")
+                .font(.callout.weight(.bold))
+                .foregroundStyle(isVoiceEnabled ? .white : Theme.Colors.primaryText)
+                .frame(width: 36, height: 36)
+                .background(Circle().fill(isVoiceEnabled ? Theme.Colors.accent : Theme.Colors.surface))
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("Comandos de voz")
+        .accessibilityValue(isVoiceEnabled ? "Ativados" : "Desativados")
+    }
+
+    /// Toggle do modo "mãos livres" — passe a mão por cima da câmera frontal
+    /// para avançar o passo sem tocar na tela suja.
+    private var handsFreeToggle: some View {
+        Button {
+            isHandsFreeEnabled.toggle()
+            if isHandsFreeEnabled {
+                proximityObserver.start()
+            } else {
+                proximityObserver.stop()
+            }
+        } label: {
+            Image(systemName: isHandsFreeEnabled ? "hand.wave.fill" : "hand.wave")
+                .font(.callout.weight(.bold))
+                .foregroundStyle(isHandsFreeEnabled ? .white : Theme.Colors.primaryText)
+                .frame(width: 36, height: 36)
+                .background(Circle().fill(isHandsFreeEnabled ? Theme.Colors.accent : Theme.Colors.surface))
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("Modo mãos livres")
+        .accessibilityValue(isHandsFreeEnabled ? "Ativado" : "Desativado")
     }
 
     // MARK: - Step carousel
@@ -254,4 +352,56 @@ struct CookingModeView: View {
     CookingModeView(recipe: MockRecipes.fitChicken)
         .environment(NotificationService())
         .modelContainer(for: CookedRecipeEntry.self, inMemory: true)
+}
+
+// MARK: - Lifecycle modifier
+
+/// Centraliza todos os modifiers reativos do Modo Cozinha em um único
+/// `ViewModifier` para aliviar o type-checker do SwiftUI — sem isso, o
+/// body fica grande demais e o Swift recusa compilar.
+private struct CookingModeLifecycle: ViewModifier {
+    let isTimerActive: Bool
+    let currentIndex: Int
+    let remainingSeconds: Int
+    let proximityTrigger: Int
+    let voiceTrigger: Int
+    let onAppearSetup: () -> Void
+    let onTeardown: () -> Void
+    let onProximityTrigger: () -> Void
+    let onVoiceTrigger: () -> Void
+
+    func body(content: Content) -> some View {
+        content
+            .animation(.spring(response: 0.4, dampingFraction: 0.8), value: isTimerActive)
+            .modifier(HapticsModifier(
+                currentIndex: currentIndex,
+                isTimerActive: isTimerActive,
+                remainingSeconds: remainingSeconds
+            ))
+            .onAppear(perform: onAppearSetup)
+            .onDisappear(perform: onTeardown)
+            .onChange(of: proximityTrigger) { _, _ in onProximityTrigger() }
+            .onChange(of: voiceTrigger) { _, _ in onVoiceTrigger() }
+    }
+}
+
+private struct HapticsModifier: ViewModifier {
+    let currentIndex: Int
+    let isTimerActive: Bool
+    let remainingSeconds: Int
+
+    func body(content: Content) -> some View {
+        content
+            .sensoryFeedback(.selection, trigger: currentIndex)
+            .sensoryFeedback(.success, trigger: isTimerActive, condition: timerStarted)
+            .sensoryFeedback(.impact(weight: .heavy), trigger: remainingSeconds, condition: timerZeroed)
+    }
+
+    private func timerStarted(_ old: Bool, _ new: Bool) -> Bool {
+        !old && new
+    }
+
+    private func timerZeroed(_ old: Int, _ new: Int) -> Bool {
+        old == 1 && new == 0
+    }
 }

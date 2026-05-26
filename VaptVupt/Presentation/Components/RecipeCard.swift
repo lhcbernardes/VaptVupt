@@ -82,5 +82,8 @@ struct RecipeCard: View {
                 .symbolEffect(.bounce, value: isFav)
         }
         .buttonStyle(.plain)
+        .sensoryFeedback(.success, trigger: isFav) { oldValue, newValue in
+            newValue && !oldValue
+        }
     }
 }

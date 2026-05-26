@@ -28,6 +28,13 @@ struct UploadRecipeView: View {
                 .padding(.bottom, Theme.Spacing.xl)
             }
             .background(Theme.Colors.background)
+            .sensoryFeedback(trigger: viewModel.aiState) { _, newValue in
+                switch newValue {
+                case .finished: .success
+                case .failed:   .error
+                default:        nil
+                }
+            }
             .navigationTitle("Nova Receita")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

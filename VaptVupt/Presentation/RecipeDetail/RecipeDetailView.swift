@@ -65,6 +65,9 @@ struct RecipeDetailView: View {
                 .background(.ultraThinMaterial, in: Circle())
                 .symbolEffect(.bounce, value: isFav)
         }
+        .sensoryFeedback(.success, trigger: isFav) { oldValue, newValue in
+            newValue && !oldValue
+        }
     }
 
     private func toolbarIcon(_ systemName: String) -> some View {

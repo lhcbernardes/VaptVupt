@@ -15,6 +15,7 @@ struct PantryView: View {
     @Environment(\.dismiss) private var dismiss
 
     @State private var newItemName: String = ""
+    @State private var isScannerPresented: Bool = false
     @FocusState private var inputFocused: Bool
 
     var body: some View {
@@ -30,6 +31,7 @@ struct PantryView: View {
                 .padding(.bottom, Theme.Spacing.xl)
             }
             .background(Theme.Colors.background)
+            .sensoryFeedback(.selection, trigger: pantry.items.count)
             .navigationTitle("Minha Despensa")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -37,14 +39,25 @@ struct PantryView: View {
                     Button("Concluir") { dismiss() }
                         .fontWeight(.semibold)
                 }
-                if !pantry.items.isEmpty {
-                    ToolbarItem(placement: .topBarLeading) {
-                        Button("Limpar") {
-                            withAnimation { pantry.clear() }
+                ToolbarItem(placement: .topBarLeading) {
+                    HStack(spacing: Theme.Spacing.sm) {
+                        Button {
+                            isScannerPresented = true
+                        } label: {
+                            Image(systemName: "camera.viewfinder")
                         }
-                        .foregroundStyle(.red)
+                        if !pantry.items.isEmpty {
+                            Button("Limpar") {
+                                withAnimation { pantry.clear() }
+                            }
+                            .foregroundStyle(.red)
+                        }
                     }
                 }
+            }
+            .sheet(isPresented: $isScannerPresented) {
+                PantryScannerView()
+                    .environment(pantry)
             }
         }
     }
