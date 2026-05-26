@@ -2,8 +2,10 @@
 //  FavoritesStore.swift
 //  SnapChef
 //
-//  Estado global de favoritos. Persiste IDs em `UserDefaults` para o MVP
-//  (substituível por Firebase/Supabase em produção).
+//  Estado global de favoritos. A persistência é delegada a um
+//  `FavoritesRepository` injetado — por padrão o `LocalFavoritesRepository`,
+//  mas em produção pode ser substituído por uma implementação remota
+//  sem mudar o restante do app.
 //
 
 import Foundation
@@ -13,9 +15,12 @@ final class FavoritesStore {
 
     private(set) var favoriteIDs: Set<UUID> = []
 
-    private let storageKey = "snapchef.favorites.v1"
+    private let repository: FavoritesRepository
 
-    init() { load() }
+    init(repository: FavoritesRepository = LocalFavoritesRepository()) {
+        self.repository = repository
+        self.favoriteIDs = repository.loadFavoriteIDs()
+    }
 
     // MARK: - Queries
 
@@ -36,21 +41,6 @@ final class FavoritesStore {
         } else {
             favoriteIDs.insert(recipe.id)
         }
-        save()
-    }
-
-    // MARK: - Persistence
-
-    private func load() {
-        guard
-            let data = UserDefaults.standard.data(forKey: storageKey),
-            let ids = try? JSONDecoder().decode(Set<UUID>.self, from: data)
-        else { return }
-        favoriteIDs = ids
-    }
-
-    private func save() {
-        guard let data = try? JSONEncoder().encode(favoriteIDs) else { return }
-        UserDefaults.standard.set(data, forKey: storageKey)
+        repository.saveFavoriteIDs(favoriteIDs)
     }
 }

@@ -257,12 +257,15 @@ Implementado:
 - [x] **VisionKit DataScanner** (`PantryScannerView`) na Despensa para captura de rótulos pela câmera.
 - [x] **Compartilhar & Importar receitas** via deep link `vaptvupt://import?data=...` — `RecipeShareService` codifica/decodifica o payload, o `shareText` inclui o link mágico, `ImportRecipePreviewView` mostra preview com confirmação, e o campo "Colar Link" do Upload detecta o esquema automaticamente.
 
+Em standby (código pronto, faltando setup no Xcode/contas):
+
+- [~] **Widget Extension** (WidgetKit) com Receita do Dia + **UI da Live Activity** — código pronto em [`VaptVuptWidget/`](./VaptVuptWidget/README.md). Falta criar o target Widget Extension no Xcode e marcar os arquivos compartilhados — instruções no README do widget.
+- [~] **Camada de Repository** para favoritos/despensa — protocolos `FavoritesRepository` e `PantryRepository` + implementação local em `Data/Repositories/` (na verdade `Domain/Repositories/`). Quando definir o backend, basta criar uma `FirebaseFavoritesRepository` ou `SupabaseFavoritesRepository` e injetar em `VaptVuptApp`.
+
 Pendentes:
 
-- [ ] **Widget Extension** (WidgetKit + SwiftData) com Receita do Dia e favoritos na Homescreen — requer App Group entitlement.
-- [ ] **UI do Live Activity Widget** — `ActivityConfiguration<CookingActivityAttributes>` precisa ser implementada num Widget Extension target.
 - [ ] **App Clips** para compartilhamento de receitas.
-- [ ] Backend real (Firebase / Supabase) substituindo `UserDefaults` para favoritos/despensa.
+- [ ] Backend real (Firebase / Supabase) substituindo `UserDefaults` — abstração já pronta.
 - [ ] Integração de LLM real no `RecipeAIService` (Gemini / Claude / GPT).
 
 ### Configuração necessária no Xcode

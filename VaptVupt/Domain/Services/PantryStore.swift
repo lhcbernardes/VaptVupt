@@ -2,12 +2,10 @@
 //  PantryStore.swift
 //  SnapChef
 //
-//  Estado global da Despensa Inteligente. Mantém a lista de ingredientes
-//  que o usuário tem em casa e expõe matching contra `Recipe.ingredients`
-//  para alimentar a seção "Pronto pra fazer" no Dashboard.
-//
-//  Persistência via `UserDefaults` (suficiente para o MVP — migrar para
-//  SwiftData em produção, se a coleção crescer muito).
+//  Estado global da Despensa Inteligente. A persistência é delegada a
+//  um `PantryRepository` injetado (padrão: `LocalPantryRepository`,
+//  baseado em `UserDefaults`). Trocar por uma implementação remota
+//  (Firebase/Supabase) é uma única troca de injeção em `VaptVuptApp`.
 //
 
 import Foundation
@@ -19,7 +17,7 @@ final class PantryStore {
 
     private(set) var items: [PantryItem] = []
 
-    private let storageKey = "snapchef.pantry.v1"
+    private let repository: PantryRepository
 
     /// Sugestões rápidas exibidas no topo da PantryView para acelerar a
     /// curadoria inicial. Escolhidos por serem itens "âncora" no preparo
@@ -32,7 +30,10 @@ final class PantryStore {
 
     // MARK: - Init
 
-    init() { load() }
+    init(repository: PantryRepository = LocalPantryRepository()) {
+        self.repository = repository
+        self.items = repository.loadItems()
+    }
 
     // MARK: - Mutations
 
@@ -41,17 +42,17 @@ final class PantryStore {
         guard !trimmed.isEmpty else { return }
         guard !contains(trimmed) else { return }
         items.append(PantryItem(name: trimmed))
-        save()
+        repository.saveItems(items)
     }
 
     func remove(_ id: UUID) {
         items.removeAll { $0.id == id }
-        save()
+        repository.saveItems(items)
     }
 
     func clear() {
         items.removeAll()
-        save()
+        repository.saveItems(items)
     }
 
     // MARK: - Queries
@@ -88,21 +89,6 @@ final class PantryStore {
             }
             .sorted { $0.1.percentage > $1.1.percentage }
             .map(\.0)
-    }
-
-    // MARK: - Persistence
-
-    private func load() {
-        guard
-            let data = UserDefaults.standard.data(forKey: storageKey),
-            let decoded = try? JSONDecoder().decode([PantryItem].self, from: data)
-        else { return }
-        items = decoded
-    }
-
-    private func save() {
-        guard let data = try? JSONEncoder().encode(items) else { return }
-        UserDefaults.standard.set(data, forKey: storageKey)
     }
 }
 
