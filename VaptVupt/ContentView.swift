@@ -16,6 +16,7 @@ struct RootTabView: View {
 
     @State private var selectedTab: Tab = .home
     @State private var isUploadPresented: Bool = false
+    @State private var importedRecipe: Recipe? = nil
 
     enum Tab: Hashable {
         case home
@@ -56,6 +57,16 @@ struct RootTabView: View {
                     dashboardViewModel.append(recipe: recipe)
                 })
             )
+        }
+        .sheet(item: $importedRecipe) { recipe in
+            ImportRecipePreviewView(recipe: recipe) { confirmed in
+                dashboardViewModel.append(recipe: confirmed)
+            }
+        }
+        .onOpenURL { url in
+            if let recipe = RecipeShareService.decode(from: url) {
+                importedRecipe = recipe
+            }
         }
     }
 }

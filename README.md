@@ -255,6 +255,7 @@ Implementado:
 - [x] **Comandos de voz** (`VoiceCommandRecognizer` com `SFSpeechRecognizer` pt-BR) — "próximo", "voltar", "pausar", "continuar", "iniciar", "cancelar".
 - [x] **ActivityKit / Live Activity** do timer: `CookingActivityAttributes` + integração em `CookingTimerController` (start / update / end).
 - [x] **VisionKit DataScanner** (`PantryScannerView`) na Despensa para captura de rótulos pela câmera.
+- [x] **Compartilhar & Importar receitas** via deep link `vaptvupt://import?data=...` — `RecipeShareService` codifica/decodifica o payload, o `shareText` inclui o link mágico, `ImportRecipePreviewView` mostra preview com confirmação, e o campo "Colar Link" do Upload detecta o esquema automaticamente.
 
 Pendentes:
 
@@ -274,8 +275,16 @@ Para que os novos recursos funcionem em runtime, adicione no Info.plist do targe
 | `NSMicrophoneUsageDescription` | "O microfone é usado para os comandos de voz no Modo Cozinha." | Comandos de voz |
 | `NSCameraUsageDescription` | "A câmera é usada para escanear rótulos e adicionar à sua despensa." | DataScanner |
 | `NSSupportsLiveActivities` | `YES` | Live Activity do timer |
+| `CFBundleURLTypes` | `[{ CFBundleURLName = "com.lhcbernardes.vaptvupt.import", CFBundleURLSchemes = ["vaptvupt"] }]` | Compartilhar/importar receitas |
 
 Para a UI do Widget e da Live Activity, adicione um novo target **Widget Extension** (File → New → Target) e marque `CookingActivityAttributes.swift` como membro também desse target.
+
+#### Compartilhar & importar receitas
+
+- O botão de compartilhar no detalhe (`RecipeDetailView`) gera um texto formatado com o link mágico `vaptvupt://import?data=<base64url>` ao final.
+- Quem tem o app instalado abre o link e cai em `ImportRecipePreviewView` (preview + confirmação) antes de adicionar ao Dashboard.
+- Quem não tem o app vê apenas o texto legível da receita.
+- No fluxo de Upload, colar um link `vaptvupt://...` no campo "Colar Link" importa direto, pulando a chamada da IA.
 
 ---
 

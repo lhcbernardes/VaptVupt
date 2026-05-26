@@ -40,7 +40,15 @@ final class RecipeDetailViewModel {
         recipe.ingredients.map { $0.scaled(by: scaleFactor) }
     }
 
+    /// URL `vaptvupt://import?data=...` que reabre a receita em outro app
+    /// VaptVupt. Apenas dispositivos com o app instalado conseguem decodificar.
+    var shareURL: URL? {
+        RecipeShareService.encode(recipe)
+    }
+
     /// Texto formatado pronto para compartilhamento via iOS share sheet.
+    /// Inclui o link mágico no final — abrir no app VaptVupt importa a
+    /// receita; em qualquer outro app, o texto fica legível.
     var shareText: String {
         var lines: [String] = [recipe.title]
         if let description = recipe.description, !description.isEmpty {
@@ -58,6 +66,11 @@ final class RecipeDetailViewModel {
         lines.append("Modo de preparo:")
         for step in recipe.steps {
             lines.append("\(step.sequence). \(step.instruction)")
+        }
+        if let shareURL {
+            lines.append("")
+            lines.append("Abrir no app VaptVupt:")
+            lines.append(shareURL.absoluteString)
         }
         lines.append("")
         lines.append("— Compartilhado via SnapChef")

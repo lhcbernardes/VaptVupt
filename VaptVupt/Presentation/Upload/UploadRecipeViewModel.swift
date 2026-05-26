@@ -77,8 +77,16 @@ final class UploadRecipeViewModel {
         Task { await runParser(text: mockTranscript, source: .voice) }
     }
 
-    /// Processa um link colado pelo usuário (simulado).
+    /// Processa um link colado pelo usuário. Se o link for um deep link
+    /// `vaptvupt://import?data=...` gerado por outro usuário do app, importa
+    /// diretamente sem chamar a IA. Caso contrário, simula a extração via LLM.
     func triggerLinkParse() {
+        if let url = RecipeShareService.extractImportURL(from: pastedLink),
+           let imported = RecipeShareService.decode(from: url) {
+            Task { @MainActor in applyParsed(imported) }
+            return
+        }
+
         let text = pastedLink.isEmpty
             ? "Receita do link: Frango grelhado com brócolis, low carb, proteico. 30 minutos. 4 porções."
             : "Receita extraída do link \(pastedLink). 25 minutos, 2 porções. Almoço fit."
