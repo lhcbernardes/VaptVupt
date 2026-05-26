@@ -1,0 +1,136 @@
+{
+  "appPolicies" : {
+    "eula" : "",
+    "policies" : [
+      {
+        "locale" : "pt_BR",
+        "policyText" : "",
+        "policyURL" : ""
+      }
+    ]
+  },
+  "identifier" : "VaptVuptTipJar",
+  "nonRenewingSubscriptions" : [],
+  "products" : [
+    {
+      "displayPrice" : "4.90",
+      "familyShareable" : false,
+      "internalID" : "TIP01",
+      "localizations" : [
+        {
+          "description" : "Um cafezinho pra agradecer ao desenvolvedor.",
+          "displayName" : "Café",
+          "locale" : "pt_BR"
+        }
+      ],
+      "productID" : "com.lhcbernardes.vaptvupt.tip.coffee",
+      "referenceName" : "Café",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "14.90",
+      "familyShareable" : false,
+      "internalID" : "TIP02",
+      "localizations" : [
+        {
+          "description" : "Um lanche pra ajudar a manter o dev acordado.",
+          "displayName" : "Almoço",
+          "locale" : "pt_BR"
+        }
+      ],
+      "productID" : "com.lhcbernardes.vaptvupt.tip.lunch",
+      "referenceName" : "Almoço",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "29.90",
+      "familyShareable" : false,
+      "internalID" : "TIP03",
+      "localizations" : [
+        {
+          "description" : "Um jantar pra fechar o dia bem.",
+          "displayName" : "Jantar",
+          "locale" : "pt_BR"
+        }
+      ],
+      "productID" : "com.lhcbernardes.vaptvupt.tip.dinner",
+      "referenceName" : "Jantar",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "99.90",
+      "familyShareable" : false,
+      "internalID" : "TIP04",
+      "localizations" : [
+        {
+          "description" : "Um banquete pra celebrar este app.",
+          "displayName" : "Banquete",
+          "locale" : "pt_BR"
+        }
+      ],
+      "productID" : "com.lhcbernardes.vaptvupt.tip.feast",
+      "referenceName" : "Banquete",
+      "type" : "Consumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "",
+    "_developerTeamID" : "",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 0,
+    "_locale" : "pt_BR",
+    "_storefront" : "BRA",
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}

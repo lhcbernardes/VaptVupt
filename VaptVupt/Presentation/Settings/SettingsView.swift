@@ -17,6 +17,8 @@ struct SettingsView: View {
 
     @Query private var historyEntries: [CookedRecipeEntry]
 
+    @State private var isTipJarPresented: Bool = false
+
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -24,6 +26,7 @@ struct SettingsView: View {
                     appearanceSection
                     notificationsSection
                     historySection
+                    supportSection
                     aboutSection
                 }
                 .padding(.horizontal, Theme.Spacing.md)
@@ -31,6 +34,9 @@ struct SettingsView: View {
             }
             .background(Theme.Colors.background)
             .navigationTitle("Ajustes")
+            .sheet(isPresented: $isTipJarPresented) {
+                TipJarView()
+            }
         }
     }
 
@@ -132,6 +138,41 @@ struct SettingsView: View {
                 }
                 .padding(Theme.Spacing.md)
             }
+            .background(
+                RoundedRectangle(cornerRadius: Theme.Radius.medium, style: .continuous)
+                    .fill(Theme.Colors.surface)
+            )
+        }
+    }
+
+    private var supportSection: some View {
+        section(title: "Apoie o desenvolvedor") {
+            Button {
+                isTipJarPresented = true
+            } label: {
+                HStack(spacing: Theme.Spacing.md) {
+                    Image(systemName: "heart.fill")
+                        .font(.callout)
+                        .foregroundStyle(.red)
+                        .frame(width: 28)
+
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("Pagar um café para o dev")
+                            .font(Theme.Typography.body)
+                            .foregroundStyle(Theme.Colors.primaryText)
+                        Text("Doação simbólica — escolha o tamanho.")
+                            .font(Theme.Typography.caption)
+                            .foregroundStyle(Theme.Colors.secondaryText)
+                    }
+                    Spacer()
+                    Image(systemName: "chevron.right")
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(Theme.Colors.secondaryText)
+                }
+                .padding(Theme.Spacing.md)
+                .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
             .background(
                 RoundedRectangle(cornerRadius: Theme.Radius.medium, style: .continuous)
                     .fill(Theme.Colors.surface)
