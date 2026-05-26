@@ -11,8 +11,33 @@
 		</dict>
 		<key>VaptVuptWidgetExtension.xcscheme_^#shared#^_</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>00D8B8D82FC5363700E77137</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>00E597342FC38C760074E933</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>00E597432FC38C760074E933</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>00E5974D2FC38C760074E933</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

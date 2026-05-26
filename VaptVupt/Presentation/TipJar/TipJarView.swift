@@ -21,6 +21,7 @@ struct TipJarView: View {
                 VStack(alignment: .leading, spacing: Theme.Spacing.lg) {
                     header
                     content
+                    externalLinksSection
                 }
                 .padding(.horizontal, Theme.Spacing.md)
                 .padding(.bottom, Theme.Spacing.xl)
@@ -176,6 +177,55 @@ struct TipJarView: View {
         }
         .buttonStyle(.plain)
         .disabled(isPurchasing || isUnavailable)
+    }
+
+    // MARK: - External links (Ko-fi / Buy Me a Coffee)
+
+    private var externalLinksSection: some View {
+        VStack(alignment: .leading, spacing: Theme.Spacing.sm) {
+            Text("Outras formas de apoiar")
+                .font(Theme.Typography.caption)
+                .foregroundStyle(Theme.Colors.secondaryText)
+                .textCase(.uppercase)
+
+            HStack(spacing: Theme.Spacing.sm) {
+                externalLink(
+                    title: "Ko-fi",
+                    subtitle: "Doação única",
+                    systemIcon: "cup.and.saucer.fill",
+                    url: URL(string: "https://ko-fi.com/leandrobernardes")!
+                )
+                externalLink(
+                    title: "Buy Me a Coffee",
+                    subtitle: "PayPal & cartão",
+                    systemIcon: "heart.fill",
+                    url: URL(string: "https://buymeacoffee.com/leandrobernardes")!
+                )
+            }
+        }
+    }
+
+    private func externalLink(title: String, subtitle: String, systemIcon: String, url: URL) -> some View {
+        Link(destination: url) {
+            VStack(alignment: .leading, spacing: Theme.Spacing.sm) {
+                Image(systemName: systemIcon)
+                    .font(.title3)
+                    .foregroundStyle(Theme.Colors.accent)
+                Text(title)
+                    .font(Theme.Typography.cardTitle)
+                    .foregroundStyle(Theme.Colors.primaryText)
+                Text(subtitle)
+                    .font(Theme.Typography.caption)
+                    .foregroundStyle(Theme.Colors.secondaryText)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(Theme.Spacing.md)
+            .background(
+                RoundedRectangle(cornerRadius: Theme.Radius.medium, style: .continuous)
+                    .fill(Theme.Colors.surface)
+            )
+        }
+        .buttonStyle(.plain)
     }
 
     // MARK: - Helpers
