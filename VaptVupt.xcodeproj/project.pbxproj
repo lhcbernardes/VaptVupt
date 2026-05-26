@@ -67,6 +67,13 @@
 			);
 			target = 00D8B8D82FC5363700E77137 /* VaptVuptWidgetExtension */;
 		};
+		00D8B8FC2FC53DB600E77137 /* Exceptions for "VaptVupt" folder in "VaptVuptWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Domain/Models/CookingActivityAttributes.swift,
+			);
+			target = 00D8B8D82FC5363700E77137 /* VaptVuptWidgetExtension */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -80,6 +87,9 @@
 		};
 		00E597372FC38C760074E933 /* VaptVupt */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				00D8B8FC2FC53DB600E77137 /* Exceptions for "VaptVupt" folder in "VaptVuptWidgetExtension" target */,
+			);
 			path = VaptVupt;
 			sourceTree = "<group>";
 		};
