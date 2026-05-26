@@ -37,7 +37,8 @@ enum MockRecipes {
             Step(sequence: 1, instruction: "Aqueça o leite em uma panela pequena até começar a soltar vapor, sem ferver.", imageURL: nil),
             Step(sequence: 2, instruction: "Adicione a aveia e cozinhe por 3 minutos em fogo baixo, mexendo sempre.", imageURL: nil),
             Step(sequence: 3, instruction: "Transfira para uma tigela, finalize com a banana fatiada, o mel e a canela.", imageURL: nil)
-        ]
+        ],
+        dietaryRestrictions: [.vegetarian]
     )
 
     // MARK: - Comida fit proteica (Almoço Low Carb)
@@ -63,7 +64,8 @@ enum MockRecipes {
             Step(sequence: 2, instruction: "Aqueça uma frigideira com azeite e grelhe o frango por 6 minutos de cada lado, até dourar.", imageURL: nil),
             Step(sequence: 3, instruction: "Cozinhe o brócolis no vapor por 4 minutos, mantendo a textura crocante.", imageURL: nil),
             Step(sequence: 4, instruction: "Sirva o frango fatiado ao lado do brócolis e regue com mais um fio de azeite.", imageURL: nil)
-        ]
+        ],
+        dietaryRestrictions: [.glutenFree, .lactoseFree, .sugarFree]
     )
 
     // MARK: - Drink sem álcool
@@ -88,6 +90,7 @@ enum MockRecipes {
             Step(sequence: 2, instruction: "Esprema o limão por cima e mexa até dissolver o açúcar.", imageURL: nil),
             Step(sequence: 3, instruction: "Adicione gelo até a metade do copo e complete com água com gás.", imageURL: nil),
             Step(sequence: 4, instruction: "Decore com um galho de hortelã e uma rodela de limão.", imageURL: nil)
-        ]
+        ],
+        dietaryRestrictions: [.vegan, .glutenFree, .lactoseFree]
     )
 }

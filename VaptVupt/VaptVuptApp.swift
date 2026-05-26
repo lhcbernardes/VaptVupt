@@ -19,13 +19,15 @@ struct VaptVuptApp: App {
     @State private var pantryStore = PantryStore()
 
     @AppStorage("snapchef.appearance") private var appearance: AppearanceMode = .system
+    @AppStorage("vaptvupt.hasSeenOnboarding") private var hasSeenOnboarding: Bool = false
 
     /// Container SwiftData usado para o histórico de preparos
-    /// (`CookedRecipeEntry`). Os erros são fatais aqui porque o app não
-    /// é capaz de funcionar de forma consistente sem persistência.
+    /// (`CookedRecipeEntry`) e anotações pessoais (`RecipeNote`).
+    /// Os erros são fatais aqui porque o app não é capaz de funcionar
+    /// de forma consistente sem persistência.
     private let modelContainer: ModelContainer = {
         do {
-            return try ModelContainer(for: CookedRecipeEntry.self)
+            return try ModelContainer(for: CookedRecipeEntry.self, RecipeNote.self)
         } catch {
             fatalError("Falha ao iniciar o ModelContainer do SwiftData: \(error)")
         }
@@ -33,13 +35,20 @@ struct VaptVuptApp: App {
 
     var body: some Scene {
         WindowGroup {
-            RootTabView(dashboardViewModel: dashboardViewModel)
-                .environment(favoritesStore)
-                .environment(notificationService)
-                .environment(pantryStore)
-                .modelContainer(modelContainer)
-                .tint(Theme.Colors.accent)
-                .preferredColorScheme(appearance.colorScheme)
+            ZStack {
+                RootTabView(dashboardViewModel: dashboardViewModel)
+                if !hasSeenOnboarding {
+                    OnboardingView()
+                        .transition(.opacity)
+                        .zIndex(1)
+                }
+            }
+            .environment(favoritesStore)
+            .environment(notificationService)
+            .environment(pantryStore)
+            .modelContainer(modelContainer)
+            .tint(Theme.Colors.accent)
+            .preferredColorScheme(appearance.colorScheme)
         }
     }
 }

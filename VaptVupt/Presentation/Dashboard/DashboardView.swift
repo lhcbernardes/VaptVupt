@@ -33,6 +33,7 @@ struct DashboardView: View {
                     pantryCTA
                     surpriseCard
                     timeFilterRow
+                    dietaryFilterRow
                     categoryCarousel
                     cookableSection
                     favoritesSection
@@ -43,6 +44,11 @@ struct DashboardView: View {
                 .padding(.bottom, Theme.Spacing.xl)
             }
             .background(Theme.Colors.background)
+            .searchable(
+                text: $viewModel.searchQuery,
+                placement: .navigationBarDrawer(displayMode: .automatic),
+                prompt: "Buscar receita ou ingrediente"
+            )
             .navigationDestination(for: RecipeCategoryGroup.self) { group in
                 CategoryRecipesView(
                     viewModel: CategoryRecipesViewModel(
@@ -238,6 +244,37 @@ struct DashboardView: View {
                         isInteractive: true,
                         action: { viewModel.timeFilter = filter }
                     )
+                }
+            }
+        }
+    }
+
+    // MARK: - Dietary filters
+
+    private var dietaryFilterRow: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: Theme.Spacing.sm) {
+                ForEach(DietaryRestriction.allCases) { restriction in
+                    TagPill(
+                        title: restriction.rawValue,
+                        systemIcon: restriction.systemIcon,
+                        tint: restriction.accentColor,
+                        isSelected: viewModel.dietaryFilters.contains(restriction),
+                        isInteractive: true,
+                        action: { viewModel.toggleDietary(restriction) }
+                    )
+                }
+                if viewModel.hasActiveFilters {
+                    Button {
+                        viewModel.clearAllFilters()
+                    } label: {
+                        Label("Limpar", systemImage: "xmark.circle.fill")
+                            .font(.caption.weight(.semibold))
+                            .padding(.horizontal, Theme.Spacing.md)
+                            .padding(.vertical, Theme.Spacing.sm)
+                            .foregroundStyle(.red)
+                    }
+                    .buttonStyle(.plain)
                 }
             }
         }

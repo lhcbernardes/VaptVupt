@@ -31,6 +31,25 @@ enum IngredientUnit: String, CaseIterable, Identifiable, Codable, Hashable {
     }
 }
 
+// MARK: - UnitSystem
+
+/// Sistema de medidas para apresentação dos ingredientes. A conversão
+/// é puramente cosmética — o `Ingredient` continua armazenando valores
+/// no sistema métrico (g/ml).
+enum UnitSystem: String, CaseIterable, Identifiable, Hashable {
+    case metric   = "Métrico"
+    case imperial = "Imperial"
+
+    var id: String { rawValue }
+
+    var systemIcon: String {
+        switch self {
+        case .metric:   "scalemass"
+        case .imperial: "ruler"
+        }
+    }
+}
+
 // MARK: - Ingredient
 
 struct Ingredient: Identifiable, Codable, Hashable {
@@ -48,33 +67,76 @@ struct Ingredient: Identifiable, Codable, Hashable {
         return copy
     }
 
-    /// Representação amigável para exibição na UI.
+    /// Representação amigável para exibição na UI no sistema métrico.
     /// Exemplos: "200 g", "1,5 xícara", "a gosto".
     var formattedQuantity: String {
+        formatted(in: .metric)
+    }
+
+    /// Devolve a string formatada no sistema escolhido. Em `.imperial`,
+    /// converte gramas → onças, kg → lb, ml → fl oz, litro → quart. Para
+    /// unidades sem equivalência clara (colher, xícara, pitada, etc.) o
+    /// valor é mantido como está, já que a maioria das receitas em
+    /// inglês também usa "tbsp / cup / pinch".
+    func formatted(in system: UnitSystem) -> String {
         if unit == .toTaste { return unit.rawValue }
 
-        let isInteger = quantity == floor(quantity)
+        // 1) Aplica conversão se imperial.
+        let (displayValue, displayUnitLabel) = convertedForDisplay(in: system)
+
+        // 2) Formata número (inteiro / 1 casa decimal).
+        let isInteger = displayValue == floor(displayValue)
         let qtyString: String
         if isInteger {
-            qtyString = "\(Int(quantity))"
+            qtyString = "\(Int(displayValue))"
         } else {
-            qtyString = String(format: "%.1f", quantity).replacingOccurrences(of: ".", with: ",")
+            qtyString = String(format: "%.1f", displayValue).replacingOccurrences(of: ".", with: ",")
         }
 
-        let unitString: String = {
-            guard unit.allowsPlural, quantity > 1 else { return unit.rawValue }
-            // Pluralização simples em português.
-            switch unit {
-            case .cup:      return "xícaras"
-            case .spoon:    return "colheres"
-            case .teaspoon: return "colheres de chá"
-            case .unit:     return "unidades"
-            case .pinch:    return "pitadas"
-            default:        return unit.rawValue
-            }
-        }()
+        return "\(qtyString) \(displayUnitLabel)"
+    }
 
-        return "\(qtyString) \(unitString)"
+    private func convertedForDisplay(in system: UnitSystem) -> (Double, String) {
+        let baseLabel = pluralizedUnitLabel(for: unit, quantity: quantity)
+
+        guard system == .imperial else {
+            return (quantity, baseLabel)
+        }
+
+        switch unit {
+        case .gram:
+            // 1 oz ≈ 28.3495 g
+            let oz = quantity / 28.3495
+            return (oz.rounded(toPlaces: 2), oz == 1 ? "oz" : "oz")
+        case .kilogram:
+            // 1 lb ≈ 0.453592 kg → kg / 0.453592 = lb
+            let lb = quantity / 0.453592
+            return (lb.rounded(toPlaces: 2), lb == 1 ? "lb" : "lb")
+        case .milliliter:
+            // 1 fl oz ≈ 29.5735 ml
+            let flOz = quantity / 29.5735
+            return (flOz.rounded(toPlaces: 2), "fl oz")
+        case .liter:
+            // 1 quart ≈ 0.946353 L
+            let qt = quantity / 0.946353
+            return (qt.rounded(toPlaces: 2), qt == 1 ? "qt" : "qt")
+        default:
+            // Demais unidades (colher, xícara, pitada) já são compatíveis
+            // entre culturas — mantemos rótulo localizado.
+            return (quantity, baseLabel)
+        }
+    }
+
+    private func pluralizedUnitLabel(for unit: IngredientUnit, quantity: Double) -> String {
+        guard unit.allowsPlural, quantity > 1 else { return unit.rawValue }
+        switch unit {
+        case .cup:      return "xícaras"
+        case .spoon:    return "colheres"
+        case .teaspoon: return "colheres de chá"
+        case .unit:     return "unidades"
+        case .pinch:    return "pitadas"
+        default:        return unit.rawValue
+        }
     }
 }
 

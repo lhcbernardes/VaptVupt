@@ -21,6 +21,12 @@ final class CookingTimerController {
     private(set) var isRunning: Bool = false
     private(set) var activeStepID: UUID? = nil
 
+    /// Timers extras criados pelo usuário no Modo Cozinha — independentes
+    /// do timer "principal" do passo atual. Permite cozinhar a massa
+    /// (timer principal) e o molho (timer extra) em paralelo.
+    private(set) var extraTimers: [AuxiliaryTimer] = []
+    private var auxTickers: [UUID: Timer] = [:]
+
     /// Injetado pelo `CookingModeView` no onAppear para que o timer possa
     /// agendar/cancelar notificações locais sem acoplar a View diretamente.
     var notificationService: NotificationService?
@@ -214,5 +220,86 @@ final class CookingTimerController {
             await liveActivity.end(nil, dismissalPolicy: .immediate)
         }
         self.liveActivity = nil
+    }
+
+    // MARK: - Auxiliary timers
+
+    /// Adiciona um timer extra com o rótulo e duração informados.
+    func addExtraTimer(label: String, minutes: Int) {
+        guard minutes > 0 else { return }
+        let aux = AuxiliaryTimer(label: label, totalSeconds: minutes * 60)
+        extraTimers.append(aux)
+        scheduleExtraTick(for: aux.id)
+    }
+
+    func toggleExtraTimer(_ id: UUID) {
+        guard let index = extraTimers.firstIndex(where: { $0.id == id }) else { return }
+        if extraTimers[index].isRunning {
+            extraTimers[index].isRunning = false
+            auxTickers[id]?.invalidate()
+            auxTickers[id] = nil
+        } else if extraTimers[index].remainingSeconds > 0 {
+            extraTimers[index].isRunning = true
+            scheduleExtraTick(for: id)
+        }
+    }
+
+    func removeExtraTimer(_ id: UUID) {
+        auxTickers[id]?.invalidate()
+        auxTickers[id] = nil
+        extraTimers.removeAll { $0.id == id }
+    }
+
+    func cancelAllExtraTimers() {
+        for (_, ticker) in auxTickers { ticker.invalidate() }
+        auxTickers.removeAll()
+        extraTimers.removeAll()
+    }
+
+    private func scheduleExtraTick(for id: UUID) {
+        auxTickers[id]?.invalidate()
+        auxTickers[id] = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] timer in
+            guard let self else { timer.invalidate(); return }
+            guard let index = self.extraTimers.firstIndex(where: { $0.id == id }) else {
+                timer.invalidate()
+                return
+            }
+            if self.extraTimers[index].remainingSeconds > 0 {
+                self.extraTimers[index].remainingSeconds -= 1
+                if self.extraTimers[index].remainingSeconds == 0 {
+                    self.extraTimers[index].isRunning = false
+                    self.auxTickers[id]?.invalidate()
+                    self.auxTickers[id] = nil
+                }
+            }
+        }
+    }
+}
+
+// MARK: - Auxiliary timer
+
+/// Timer extra simples — sem notificação local nem Live Activity.
+/// Pensado para usos paralelos ("molho", "vinagrete") durante o preparo.
+struct AuxiliaryTimer: Identifiable, Hashable {
+    let id: UUID = UUID()
+    var label: String
+    var totalSeconds: Int
+    var remainingSeconds: Int
+    var isRunning: Bool
+
+    init(label: String, totalSeconds: Int) {
+        self.label = label
+        self.totalSeconds = totalSeconds
+        self.remainingSeconds = totalSeconds
+        self.isRunning = true
+    }
+
+    var formatted: String {
+        String(format: "%02d:%02d", remainingSeconds / 60, remainingSeconds % 60)
+    }
+
+    var progress: Double {
+        guard totalSeconds > 0 else { return 0 }
+        return 1.0 - Double(remainingSeconds) / Double(totalSeconds)
     }
 }

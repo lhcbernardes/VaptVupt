@@ -42,6 +42,10 @@ struct Recipe: Identifiable, Codable, Hashable {
     var difficulty: RecipeDifficulty
     var ingredients: [Ingredient]
     var steps: [Step]
+    /// Restrições alimentares atendidas pela receita (vegetariano, sem
+    /// glúten, etc.). Opcional na decode para receitas antigas que ainda
+    /// não foram migradas no payload.
+    var dietaryRestrictions: [DietaryRestriction] = []
 
     /// Grupos de categoria derivados das subcategorias atribuídas à receita.
     var categoryGroups: Set<RecipeCategoryGroup> {

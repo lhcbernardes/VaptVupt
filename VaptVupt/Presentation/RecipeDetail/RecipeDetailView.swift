@@ -9,13 +9,22 @@
 //   - Botões "Lista de Compras" e "Iniciar Modo Cozinha"
 //
 
+import SwiftData
 import SwiftUI
 
 struct RecipeDetailView: View {
     @Bindable var viewModel: RecipeDetailViewModel
     @Environment(FavoritesStore.self) private var favorites
+    @Environment(\.modelContext) private var modelContext
+
+    @Query private var allNotes: [RecipeNote]
+    @State private var noteDraft: String = ""
 
     private let heroHeight: CGFloat = 320
+
+    private var currentNote: RecipeNote? {
+        allNotes.first(where: { $0.recipeID == viewModel.recipe.id })
+    }
 
     var body: some View {
         ScrollView {
@@ -129,13 +138,90 @@ struct RecipeDetailView: View {
                     .font(Theme.Typography.body)
                     .foregroundStyle(Theme.Colors.secondaryText)
             }
+            if !viewModel.recipe.dietaryRestrictions.isEmpty {
+                dietaryBadges
+            }
             servingsSelector
             ingredientsSection
             stepsSection
+            personalNoteSection
             actionButtons
         }
         .padding(.horizontal, Theme.Spacing.md)
         .padding(.bottom, Theme.Spacing.xl)
+        .onAppear { noteDraft = currentNote?.text ?? "" }
+    }
+
+    // MARK: - Dietary badges
+
+    private var dietaryBadges: some View {
+        VStack(alignment: .leading, spacing: Theme.Spacing.sm) {
+            Text("Adequado para")
+                .font(Theme.Typography.caption)
+                .foregroundStyle(Theme.Colors.secondaryText)
+                .textCase(.uppercase)
+
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: Theme.Spacing.sm) {
+                    ForEach(viewModel.recipe.dietaryRestrictions, id: \.self) { restriction in
+                        TagPill(
+                            title: restriction.rawValue,
+                            systemIcon: restriction.systemIcon,
+                            tint: restriction.accentColor
+                        )
+                    }
+                }
+            }
+        }
+    }
+
+    // MARK: - Personal note
+
+    private var personalNoteSection: some View {
+        VStack(alignment: .leading, spacing: Theme.Spacing.sm) {
+            HStack {
+                Label("Minha anotação", systemImage: "note.text")
+                    .font(Theme.Typography.sectionTitle)
+                Spacer()
+                if !noteDraft.isEmpty {
+                    Button("Salvar") { saveNote() }
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(Theme.Colors.accent)
+                }
+            }
+            TextEditor(text: $noteDraft)
+                .frame(minHeight: 100)
+                .padding(Theme.Spacing.sm)
+                .scrollContentBackground(.hidden)
+                .background(
+                    RoundedRectangle(cornerRadius: Theme.Radius.medium, style: .continuous)
+                        .fill(Theme.Colors.surface)
+                )
+                .overlay(alignment: .topLeading) {
+                    if noteDraft.isEmpty {
+                        Text("Variações, ajustes de sal, dicas que você descobriu cozinhando…")
+                            .font(Theme.Typography.caption)
+                            .foregroundStyle(Theme.Colors.secondaryText.opacity(0.7))
+                            .padding(Theme.Spacing.md)
+                            .allowsHitTesting(false)
+                    }
+                }
+        }
+    }
+
+    private func saveNote() {
+        let trimmed = noteDraft.trimmingCharacters(in: .whitespacesAndNewlines)
+        if let existing = currentNote {
+            if trimmed.isEmpty {
+                modelContext.delete(existing)
+            } else {
+                existing.text = trimmed
+                existing.updatedAt = .now
+            }
+        } else if !trimmed.isEmpty {
+            modelContext.insert(RecipeNote(recipeID: viewModel.recipe.id, text: trimmed))
+        }
+        try? modelContext.save()
     }
 
     private var quickFacts: some View {
@@ -200,17 +286,22 @@ struct RecipeDetailView: View {
 
     private var ingredientsSection: some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.md) {
-            Text("Ingredientes")
-                .font(Theme.Typography.sectionTitle)
+            HStack {
+                Text("Ingredientes")
+                    .font(Theme.Typography.sectionTitle)
+                Spacer()
+                unitSystemToggle
+            }
             VStack(spacing: 0) {
                 ForEach(Array(viewModel.scaledIngredients.enumerated()), id: \.element.id) { index, ingredient in
                     HStack {
                         Text(ingredient.name)
                             .font(Theme.Typography.body)
                         Spacer()
-                        Text(ingredient.formattedQuantity)
+                        Text(ingredient.formatted(in: viewModel.unitSystem))
                             .font(Theme.Typography.body.weight(.semibold))
                             .foregroundStyle(Theme.Colors.secondaryText)
+                            .contentTransition(.numericText())
                     }
                     .padding(.vertical, Theme.Spacing.sm)
                     if index < viewModel.scaledIngredients.count - 1 {
@@ -225,6 +316,26 @@ struct RecipeDetailView: View {
                     .fill(Theme.Colors.surface)
             )
         }
+    }
+
+    private var unitSystemToggle: some View {
+        Button {
+            withAnimation(.easeInOut(duration: 0.2)) {
+                viewModel.toggleUnitSystem()
+            }
+        } label: {
+            HStack(spacing: 4) {
+                Image(systemName: viewModel.unitSystem.systemIcon)
+                Text(viewModel.unitSystem.rawValue)
+            }
+            .font(.caption.weight(.semibold))
+            .padding(.horizontal, Theme.Spacing.sm)
+            .padding(.vertical, 4)
+            .foregroundStyle(Theme.Colors.accent)
+            .background(Capsule().fill(Theme.Colors.accent.opacity(0.12)))
+        }
+        .buttonStyle(.plain)
+        .sensoryFeedback(.selection, trigger: viewModel.unitSystem)
     }
 
     private var stepsSection: some View {

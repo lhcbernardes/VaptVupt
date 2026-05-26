@@ -17,6 +17,7 @@ final class RecipeDetailViewModel {
 
     let recipe: Recipe
     var servings: Int
+    var unitSystem: UnitSystem = .metric
     var isCookingModeOpen: Bool = false
     var isShoppingListOpen: Bool = false
 
@@ -25,6 +26,10 @@ final class RecipeDetailViewModel {
     init(recipe: Recipe) {
         self.recipe = recipe
         self.servings = recipe.servings
+    }
+
+    func toggleUnitSystem() {
+        unitSystem = unitSystem == .metric ? .imperial : .metric
     }
 
     // MARK: - Derived
