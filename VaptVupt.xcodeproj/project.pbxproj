@@ -6,7 +6,20 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		00D8B8DC2FC5363700E77137 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00D8B8DB2FC5363700E77137 /* WidgetKit.framework */; };
+		00D8B8DE2FC5363700E77137 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00D8B8DD2FC5363700E77137 /* SwiftUI.framework */; };
+		00D8B8EF2FC5363800E77137 /* VaptVuptWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 00D8B8D92FC5363700E77137 /* VaptVuptWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
+		00D8B8ED2FC5363800E77137 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 00E5972D2FC38C760074E933 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 00D8B8D82FC5363700E77137;
+			remoteInfo = VaptVuptWidgetExtension;
+		};
 		00E597452FC38C760074E933 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 00E5972D2FC38C760074E933 /* Project object */;
@@ -23,13 +36,48 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		00D8B8F42FC5363800E77137 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				00D8B8EF2FC5363800E77137 /* VaptVuptWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		00D8B8D92FC5363700E77137 /* VaptVuptWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = VaptVuptWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		00D8B8DB2FC5363700E77137 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		00D8B8DD2FC5363700E77137 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		00E597352FC38C760074E933 /* VaptVupt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VaptVupt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E597442FC38C760074E933 /* VaptVuptTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VaptVuptTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E5974E2FC38C760074E933 /* VaptVuptUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VaptVuptUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		00D8B8F02FC5363800E77137 /* Exceptions for "VaptVuptWidget" folder in "VaptVuptWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 00D8B8D82FC5363700E77137 /* VaptVuptWidgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		00D8B8DF2FC5363700E77137 /* VaptVuptWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				00D8B8F02FC5363800E77137 /* Exceptions for "VaptVuptWidget" folder in "VaptVuptWidgetExtension" target */,
+			);
+			path = VaptVuptWidget;
+			sourceTree = "<group>";
+		};
 		00E597372FC38C760074E933 /* VaptVupt */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = VaptVupt;
@@ -48,6 +96,15 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		00D8B8D62FC5363700E77137 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00D8B8DE2FC5363700E77137 /* SwiftUI.framework in Frameworks */,
+				00D8B8DC2FC5363700E77137 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		00E597322FC38C760074E933 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -72,12 +129,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00D8B8DA2FC5363700E77137 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				00D8B8DB2FC5363700E77137 /* WidgetKit.framework */,
+				00D8B8DD2FC5363700E77137 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		00E5972C2FC38C760074E933 = {
 			isa = PBXGroup;
 			children = (
 				00E597372FC38C760074E933 /* VaptVupt */,
 				00E597472FC38C760074E933 /* VaptVuptTests */,
 				00E597512FC38C760074E933 /* VaptVuptUITests */,
+				00D8B8DF2FC5363700E77137 /* VaptVuptWidget */,
+				00D8B8DA2FC5363700E77137 /* Frameworks */,
 				00E597362FC38C760074E933 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,6 +156,7 @@
 				00E597352FC38C760074E933 /* VaptVupt.app */,
 				00E597442FC38C760074E933 /* VaptVuptTests.xctest */,
 				00E5974E2FC38C760074E933 /* VaptVuptUITests.xctest */,
+				00D8B8D92FC5363700E77137 /* VaptVuptWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,6 +164,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		00D8B8D82FC5363700E77137 /* VaptVuptWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00D8B8F12FC5363800E77137 /* Build configuration list for PBXNativeTarget "VaptVuptWidgetExtension" */;
+			buildPhases = (
+				00D8B8D52FC5363700E77137 /* Sources */,
+				00D8B8D62FC5363700E77137 /* Frameworks */,
+				00D8B8D72FC5363700E77137 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				00D8B8DF2FC5363700E77137 /* VaptVuptWidget */,
+			);
+			name = VaptVuptWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = VaptVuptWidgetExtension;
+			productReference = 00D8B8D92FC5363700E77137 /* VaptVuptWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		00E597342FC38C760074E933 /* VaptVupt */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E597582FC38C760074E933 /* Build configuration list for PBXNativeTarget "VaptVupt" */;
@@ -102,10 +193,12 @@
 				00E597312FC38C760074E933 /* Sources */,
 				00E597322FC38C760074E933 /* Frameworks */,
 				00E597332FC38C760074E933 /* Resources */,
+				00D8B8F42FC5363800E77137 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				00D8B8EE2FC5363800E77137 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				00E597372FC38C760074E933 /* VaptVupt */,
@@ -173,6 +266,9 @@
 				LastSwiftUpdateCheck = 2650;
 				LastUpgradeCheck = 2650;
 				TargetAttributes = {
+					00D8B8D82FC5363700E77137 = {
+						CreatedOnToolsVersion = 26.5;
+					};
 					00E597342FC38C760074E933 = {
 						CreatedOnToolsVersion = 26.5;
 					};
@@ -203,11 +299,19 @@
 				00E597342FC38C760074E933 /* VaptVupt */,
 				00E597432FC38C760074E933 /* VaptVuptTests */,
 				00E5974D2FC38C760074E933 /* VaptVuptUITests */,
+				00D8B8D82FC5363700E77137 /* VaptVuptWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		00D8B8D72FC5363700E77137 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		00E597332FC38C760074E933 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -232,6 +336,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		00D8B8D52FC5363700E77137 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		00E597312FC38C760074E933 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -256,6 +367,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		00D8B8EE2FC5363800E77137 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 00D8B8D82FC5363700E77137 /* VaptVuptWidgetExtension */;
+			targetProxy = 00D8B8ED2FC5363800E77137 /* PBXContainerItemProxy */;
+		};
 		00E597462FC38C760074E933 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 00E597342FC38C760074E933 /* VaptVupt */;
@@ -269,6 +385,64 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		00D8B8F22FC5363800E77137 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = VaptVuptWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = VaptVuptWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Any.VaptVupt.VaptVuptWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		00D8B8F32FC5363800E77137 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = VaptVuptWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = VaptVuptWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Any.VaptVupt.VaptVuptWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		00E597562FC38C760074E933 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -533,6 +707,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		00D8B8F12FC5363800E77137 /* Build configuration list for PBXNativeTarget "VaptVuptWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00D8B8F22FC5363800E77137 /* Debug */,
+				00D8B8F32FC5363800E77137 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		00E597302FC38C760074E933 /* Build configuration list for PBXProject "VaptVupt" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

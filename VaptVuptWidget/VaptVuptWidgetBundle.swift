@@ -2,18 +2,16 @@
 //  VaptVuptWidgetBundle.swift
 //  VaptVuptWidget
 //
-//  Entry-point do bundle do Widget Extension. Agrupa a Live Activity do
-//  Modo Cozinha + o Widget de Receita do Dia. Adicione novos widgets
-//  ao corpo do `body` à medida que forem implementados.
+//  Created by Leandro Henrique Cavalcanti Bernardes on 25/05/26.
 //
 
-import SwiftUI
 import WidgetKit
+import SwiftUI
 
 @main
 struct VaptVuptWidgetBundle: WidgetBundle {
     var body: some Widget {
-        RecipeOfTheDayWidget()
-        CookingLiveActivity()
+        VaptVuptWidget()
+        VaptVuptWidgetLiveActivity()
     }
 }

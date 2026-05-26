@@ -1,32 +1,31 @@
 //
-//  CookingLiveActivity.swift
+//  VaptVuptWidgetLiveActivity.swift
 //  VaptVuptWidget
 //
 //  UI da Live Activity do timer do Modo Cozinha. Implementa o
 //  `ActivityConfiguration<CookingActivityAttributes>` para Lock Screen
 //  e três variantes de Dynamic Island (compact / minimal / expanded).
 //
-//  Importante:
-//   • Este arquivo PERTENCE ao target Widget Extension. NÃO marque como
-//     membro do target principal.
-//   • `CookingActivityAttributes.swift` (no target principal) precisa ter
-//     Target Membership ATIVADO também para este target — File Inspector.
-//   • Use `Text(timerInterval:)` para deixar o sistema desenhar a contagem
-//     regressiva sem que o app precise emitir `update` a cada segundo.
+//  Usa `Text(timerInterval:)` para deixar o sistema desenhar a contagem
+//  regressiva sem que o app precise emitir `update` a cada segundo.
+//
+//  Pré-requisito: `CookingActivityAttributes.swift` (em
+//  `VaptVupt/Domain/Models/`) precisa ter Target Membership ativado
+//  também para o target VaptVuptWidgetExtension. No Xcode: selecione o
+//  arquivo, File Inspector (cmd+opt+1), marque "VaptVuptWidgetExtension".
 //
 
 import ActivityKit
 import SwiftUI
 import WidgetKit
 
-struct CookingLiveActivity: Widget {
+struct VaptVuptWidgetLiveActivity: Widget {
 
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: CookingActivityAttributes.self) { context in
-            // Lock Screen / banner.
             LockScreenView(context: context)
-                .activityBackgroundTint(.black.opacity(0.85))
-                .activitySystemActionForegroundColor(.white)
+                .activityBackgroundTint(Color.black.opacity(0.85))
+                .activitySystemActionForegroundColor(Color.white)
         } dynamicIsland: { context in
             DynamicIsland {
                 DynamicIslandExpandedRegion(.leading) {
@@ -87,7 +86,7 @@ private struct LockScreenView: View {
         HStack(spacing: 16) {
             ZStack {
                 Circle()
-                    .stroke(.orange.opacity(0.25), lineWidth: 4)
+                    .stroke(Color.orange.opacity(0.25), lineWidth: 4)
                 Image(systemName: "flame.fill")
                     .foregroundStyle(.orange)
             }
