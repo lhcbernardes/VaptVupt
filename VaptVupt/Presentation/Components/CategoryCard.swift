@@ -46,5 +46,8 @@ struct CategoryCard: View {
             RoundedRectangle(cornerRadius: Theme.Radius.large, style: .continuous)
                 .stroke(group.accentColor.opacity(0.18), lineWidth: 1)
         )
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("Categoria \(group.rawValue). \(group.subtitle).")
+        .accessibilityHint("Toque duplo para ver todas as receitas.")
     }
 }

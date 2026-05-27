@@ -160,6 +160,7 @@ struct PantryView: View {
         HStack(spacing: Theme.Spacing.md) {
             Image(systemName: "checkmark.circle.fill")
                 .foregroundStyle(Theme.Colors.accent)
+                .accessibilityHidden(true)
             Text(item.name)
                 .font(Theme.Typography.body)
             Spacer()
@@ -170,6 +171,7 @@ struct PantryView: View {
                     .foregroundStyle(Theme.Colors.secondaryText)
             }
             .buttonStyle(.plain)
+            .accessibilityLabel("Remover \(item.name) da despensa")
         }
         .padding(.horizontal, Theme.Spacing.md)
         .padding(.vertical, Theme.Spacing.md)

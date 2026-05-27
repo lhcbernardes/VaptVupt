@@ -85,6 +85,7 @@ struct RecipeDetailView: View {
             .foregroundStyle(Theme.Colors.primaryText)
             .frame(width: 32, height: 32)
             .background(.ultraThinMaterial, in: Circle())
+            .accessibilityLabel("Compartilhar receita")
     }
 
     // MARK: - Hero (parallax)
@@ -250,6 +251,8 @@ struct RecipeDetailView: View {
             RoundedRectangle(cornerRadius: Theme.Radius.medium, style: .continuous)
                 .fill(Theme.Colors.surface)
         )
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(label): \(value)")
     }
 
     private var servingsSelector: some View {
@@ -258,12 +261,13 @@ struct RecipeDetailView: View {
                 .font(Theme.Typography.sectionTitle)
             Spacer()
             HStack(spacing: Theme.Spacing.md) {
-                stepperButton(systemName: "minus", action: viewModel.decreaseServings)
+                stepperButton(systemName: "minus", label: "Diminuir porções", action: viewModel.decreaseServings)
                 Text("\(viewModel.servings)")
                     .font(Theme.Typography.cardTitle)
                     .monospacedDigit()
                     .frame(minWidth: 24)
-                stepperButton(systemName: "plus", action: viewModel.increaseServings)
+                    .accessibilityLabel("\(viewModel.servings) porções")
+                stepperButton(systemName: "plus", label: "Aumentar porções", action: viewModel.increaseServings)
             }
             .padding(.horizontal, Theme.Spacing.md)
             .padding(.vertical, Theme.Spacing.sm)
@@ -273,7 +277,7 @@ struct RecipeDetailView: View {
         }
     }
 
-    private func stepperButton(systemName: String, action: @escaping () -> Void) -> some View {
+    private func stepperButton(systemName: String, label: String, action: @escaping () -> Void) -> some View {
         Button(action: action) {
             Image(systemName: systemName)
                 .font(.callout.weight(.bold))
@@ -282,6 +286,7 @@ struct RecipeDetailView: View {
                 .background(Circle().fill(Theme.Colors.accent.opacity(0.15)))
         }
         .buttonStyle(.plain)
+        .accessibilityLabel(label)
     }
 
     private var ingredientsSection: some View {
@@ -336,6 +341,9 @@ struct RecipeDetailView: View {
         }
         .buttonStyle(.plain)
         .sensoryFeedback(.selection, trigger: viewModel.unitSystem)
+        .accessibilityLabel("Sistema de unidades")
+        .accessibilityValue(viewModel.unitSystem.rawValue)
+        .accessibilityHint("Toque para alternar entre métrico e imperial.")
     }
 
     private var stepsSection: some View {

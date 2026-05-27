@@ -95,6 +95,8 @@ struct OnboardingView: View {
             }
         }
         .padding(.bottom, Theme.Spacing.md)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("Página \(page + 1) de \(pages.count)")
     }
 
     @ViewBuilder

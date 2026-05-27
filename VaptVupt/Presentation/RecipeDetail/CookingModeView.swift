@@ -192,6 +192,7 @@ struct CookingModeView: View {
                     .background(Circle().fill(Theme.Colors.surface))
             }
             .buttonStyle(.plain)
+            .accessibilityLabel("Sair do Modo Cozinha")
         }
         .padding(Theme.Spacing.md)
     }
@@ -404,6 +405,7 @@ struct CookingModeView: View {
                     .background(Circle().fill(Theme.Colors.accent))
             }
             .buttonStyle(.plain)
+            .accessibilityLabel(timerController.isRunning ? "Pausar timer" : "Retomar timer")
 
             Button {
                 timerController.cancel()
@@ -415,6 +417,7 @@ struct CookingModeView: View {
                     .background(Circle().fill(Theme.Colors.surface))
             }
             .buttonStyle(.plain)
+            .accessibilityLabel("Cancelar timer")
         }
         .padding(Theme.Spacing.md)
         .background(
@@ -422,6 +425,8 @@ struct CookingModeView: View {
                 .fill(Theme.Colors.surface)
         )
         .padding(.horizontal, Theme.Spacing.md)
+        .accessibilityElement(children: .contain)
+        .accessibilityLabel("Timer ativo, \(timerController.formatted), \(timerController.isRunning ? "em andamento" : "pausado")")
     }
 
     // MARK: - Pagination
@@ -438,6 +443,7 @@ struct CookingModeView: View {
             .buttonStyle(.plain)
             .disabled(currentIndex == 0)
             .opacity(currentIndex == 0 ? 0.4 : 1)
+            .accessibilityLabel("Passo anterior")
 
             HStack(spacing: 6) {
                 ForEach(0..<steps.count, id: \.self) { index in
@@ -473,8 +479,11 @@ struct CookingModeView: View {
                         .foregroundStyle(.white)
                 }
                 .buttonStyle(.plain)
+                .accessibilityLabel("Próximo passo")
             }
         }
+        .accessibilityElement(children: .contain)
+        .accessibilityLabel("Passo \(currentIndex + 1) de \(steps.count)")
         .padding(.vertical, Theme.Spacing.md)
     }
 }

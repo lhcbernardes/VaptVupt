@@ -85,6 +85,8 @@ struct SettingsView: View {
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
+        .accessibilityLabel("Aparência: \(mode.displayName)")
+        .accessibilityAddTraits(appearance == mode ? [.isSelected] : [])
     }
 
     private var notificationsSection: some View {

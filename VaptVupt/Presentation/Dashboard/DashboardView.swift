@@ -144,6 +144,9 @@ struct DashboardView: View {
                 }
             }
             .buttonStyle(.plain)
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel("Receita do dia: \(recipe.title)")
+            .accessibilityHint("Abre os detalhes da receita.")
         }
     }
 
@@ -186,6 +189,9 @@ struct DashboardView: View {
             )
         }
         .buttonStyle(.plain)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("Minha Despensa, \(pantryCTASubtitle)")
+        .accessibilityHint("Abre a tela da despensa.")
     }
 
     private var pantryCTASubtitle: String {
@@ -244,6 +250,8 @@ struct DashboardView: View {
             )
         }
         .buttonStyle(.plain)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(title), \(subtitle)")
     }
 
     // MARK: - Surprise card
@@ -289,6 +297,8 @@ struct DashboardView: View {
             )
         }
         .buttonStyle(.plain)
+        .accessibilityLabel("Surpreenda-me")
+        .accessibilityHint("Sorteia uma receita aleatória do acervo.")
     }
 
     // MARK: - Time filter

@@ -177,6 +177,9 @@ struct TipJarView: View {
         }
         .buttonStyle(.plain)
         .disabled(isPurchasing || isUnavailable)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(tip.title), \(priceLabel)")
+        .accessibilityHint(isUnavailable ? "Produto indisponível." : "Toque duplo para apoiar o desenvolvedor com \(tip.title.lowercased()).")
     }
 
     // MARK: - External links (Ko-fi / Buy Me a Coffee)

@@ -101,6 +101,10 @@ struct ShoppingListView: View {
             )
             .opacity(isChecked ? 0.65 : 1)
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(ingredient.name), \(ingredient.formattedQuantity)")
+        .accessibilityAddTraits(isChecked ? [.isSelected] : [])
+        .accessibilityHint(isChecked ? "Item marcado. Toque duplo para desmarcar." : "Toque duplo para marcar como comprado.")
         .buttonStyle(.plain)
     }
 

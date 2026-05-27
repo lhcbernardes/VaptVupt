@@ -23,8 +23,11 @@ struct TagPill: View {
                     pillContent
                 }
                 .buttonStyle(.plain)
+                .accessibilityLabel(title)
+                .accessibilityAddTraits(isSelected ? [.isSelected] : [])
             } else {
                 pillContent
+                    .accessibilityLabel(title)
             }
         }
     }
