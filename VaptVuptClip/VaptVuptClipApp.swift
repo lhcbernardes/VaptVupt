@@ -11,9 +11,10 @@
 //   • Este arquivo PERTENCE ao target App Clip. NÃO marque como
 //     membro do target principal.
 //   • Os tipos `Recipe`, `Ingredient`, `Step`, `RecipeCategory`,
-//     `RecipeShareService`, `Theme`, `RemoteImage` e `TagPill` precisam
-//     ter Target Membership ATIVADO também para este target (File
-//     Inspector → Target Membership) — instruções em README.md.
+//     `DietaryRestriction`, `RecipeShareService`, `Theme`,
+//     `RemoteImage` e `TagPill` precisam ter Target Membership ATIVADO
+//     também para este target (File Inspector → Target Membership) —
+//     instruções em README.md.
 //
 
 import SwiftUI

@@ -10,6 +10,7 @@
 		00D8B8DC2FC5363700E77137 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00D8B8DB2FC5363700E77137 /* WidgetKit.framework */; };
 		00D8B8DE2FC5363700E77137 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00D8B8DD2FC5363700E77137 /* SwiftUI.framework */; };
 		00D8B8EF2FC5363800E77137 /* VaptVuptWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 00D8B8D92FC5363700E77137 /* VaptVuptWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		00D8B93D2FC6756900E77137 /* VaptVuptClip.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = 00D8B9192FC6756800E77137 /* VaptVuptClip.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -19,6 +20,27 @@
 			proxyType = 1;
 			remoteGlobalIDString = 00D8B8D82FC5363700E77137;
 			remoteInfo = VaptVuptWidgetExtension;
+		};
+		00D8B92A2FC6756900E77137 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 00E5972D2FC38C760074E933 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 00D8B9182FC6756800E77137;
+			remoteInfo = VaptVuptClip;
+		};
+		00D8B9342FC6756900E77137 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 00E5972D2FC38C760074E933 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 00D8B9182FC6756800E77137;
+			remoteInfo = VaptVuptClip;
+		};
+		00D8B93B2FC6756900E77137 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 00E5972D2FC38C760074E933 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 00D8B9182FC6756800E77137;
+			remoteInfo = VaptVuptClip;
 		};
 		00E597452FC38C760074E933 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -48,12 +70,26 @@
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		00D8B9422FC6756900E77137 /* Embed App Clips */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/AppClips";
+			dstSubfolderSpec = 16;
+			files = (
+				00D8B93D2FC6756900E77137 /* VaptVuptClip.app in Embed App Clips */,
+			);
+			name = "Embed App Clips";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		00D8B8D92FC5363700E77137 /* VaptVuptWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = VaptVuptWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		00D8B8DB2FC5363700E77137 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		00D8B8DD2FC5363700E77137 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		00D8B9192FC6756800E77137 /* VaptVuptClip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VaptVuptClip.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		00D8B9292FC6756900E77137 /* VaptVuptClipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VaptVuptClipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00D8B9332FC6756900E77137 /* VaptVuptClipUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VaptVuptClipUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E597352FC38C760074E933 /* VaptVupt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VaptVupt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E597442FC38C760074E933 /* VaptVuptTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VaptVuptTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E5974E2FC38C760074E933 /* VaptVuptUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VaptVuptUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,6 +110,13 @@
 			);
 			target = 00D8B8D82FC5363700E77137 /* VaptVuptWidgetExtension */;
 		};
+		00D8B93E2FC6756900E77137 /* Exceptions for "VaptVuptClip" folder in "VaptVuptClip" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 00D8B9182FC6756800E77137 /* VaptVuptClip */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -83,6 +126,24 @@
 				00D8B8F02FC5363800E77137 /* Exceptions for "VaptVuptWidget" folder in "VaptVuptWidgetExtension" target */,
 			);
 			path = VaptVuptWidget;
+			sourceTree = "<group>";
+		};
+		00D8B91A2FC6756800E77137 /* VaptVuptClip */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				00D8B93E2FC6756900E77137 /* Exceptions for "VaptVuptClip" folder in "VaptVuptClip" target */,
+			);
+			path = VaptVuptClip;
+			sourceTree = "<group>";
+		};
+		00D8B92C2FC6756900E77137 /* VaptVuptClipTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = VaptVuptClipTests;
+			sourceTree = "<group>";
+		};
+		00D8B9362FC6756900E77137 /* VaptVuptClipUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = VaptVuptClipUITests;
 			sourceTree = "<group>";
 		};
 		00E597372FC38C760074E933 /* VaptVupt */ = {
@@ -112,6 +173,27 @@
 			files = (
 				00D8B8DE2FC5363700E77137 /* SwiftUI.framework in Frameworks */,
 				00D8B8DC2FC5363700E77137 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		00D8B9162FC6756800E77137 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		00D8B9262FC6756900E77137 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		00D8B9302FC6756900E77137 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,6 +237,9 @@
 				00E597472FC38C760074E933 /* VaptVuptTests */,
 				00E597512FC38C760074E933 /* VaptVuptUITests */,
 				00D8B8DF2FC5363700E77137 /* VaptVuptWidget */,
+				00D8B91A2FC6756800E77137 /* VaptVuptClip */,
+				00D8B92C2FC6756900E77137 /* VaptVuptClipTests */,
+				00D8B9362FC6756900E77137 /* VaptVuptClipUITests */,
 				00D8B8DA2FC5363700E77137 /* Frameworks */,
 				00E597362FC38C760074E933 /* Products */,
 			);
@@ -167,6 +252,9 @@
 				00E597442FC38C760074E933 /* VaptVuptTests.xctest */,
 				00E5974E2FC38C760074E933 /* VaptVuptUITests.xctest */,
 				00D8B8D92FC5363700E77137 /* VaptVuptWidgetExtension.appex */,
+				00D8B9192FC6756800E77137 /* VaptVuptClip.app */,
+				00D8B9292FC6756900E77137 /* VaptVuptClipTests.xctest */,
+				00D8B9332FC6756900E77137 /* VaptVuptClipUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -196,6 +284,74 @@
 			productReference = 00D8B8D92FC5363700E77137 /* VaptVuptWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		00D8B9182FC6756800E77137 /* VaptVuptClip */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00D8B93F2FC6756900E77137 /* Build configuration list for PBXNativeTarget "VaptVuptClip" */;
+			buildPhases = (
+				00D8B9152FC6756800E77137 /* Sources */,
+				00D8B9162FC6756800E77137 /* Frameworks */,
+				00D8B9172FC6756800E77137 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				00D8B91A2FC6756800E77137 /* VaptVuptClip */,
+			);
+			name = VaptVuptClip;
+			packageProductDependencies = (
+			);
+			productName = VaptVuptClip;
+			productReference = 00D8B9192FC6756800E77137 /* VaptVuptClip.app */;
+			productType = "com.apple.product-type.application.on-demand-install-capable";
+		};
+		00D8B9282FC6756900E77137 /* VaptVuptClipTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00D8B9432FC6756900E77137 /* Build configuration list for PBXNativeTarget "VaptVuptClipTests" */;
+			buildPhases = (
+				00D8B9252FC6756900E77137 /* Sources */,
+				00D8B9262FC6756900E77137 /* Frameworks */,
+				00D8B9272FC6756900E77137 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				00D8B92B2FC6756900E77137 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				00D8B92C2FC6756900E77137 /* VaptVuptClipTests */,
+			);
+			name = VaptVuptClipTests;
+			packageProductDependencies = (
+			);
+			productName = VaptVuptClipTests;
+			productReference = 00D8B9292FC6756900E77137 /* VaptVuptClipTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		00D8B9322FC6756900E77137 /* VaptVuptClipUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00D8B9462FC6756900E77137 /* Build configuration list for PBXNativeTarget "VaptVuptClipUITests" */;
+			buildPhases = (
+				00D8B92F2FC6756900E77137 /* Sources */,
+				00D8B9302FC6756900E77137 /* Frameworks */,
+				00D8B9312FC6756900E77137 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				00D8B9352FC6756900E77137 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				00D8B9362FC6756900E77137 /* VaptVuptClipUITests */,
+			);
+			name = VaptVuptClipUITests;
+			packageProductDependencies = (
+			);
+			productName = VaptVuptClipUITests;
+			productReference = 00D8B9332FC6756900E77137 /* VaptVuptClipUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		00E597342FC38C760074E933 /* VaptVupt */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E597582FC38C760074E933 /* Build configuration list for PBXNativeTarget "VaptVupt" */;
@@ -204,11 +360,13 @@
 				00E597322FC38C760074E933 /* Frameworks */,
 				00E597332FC38C760074E933 /* Resources */,
 				00D8B8F42FC5363800E77137 /* Embed Foundation Extensions */,
+				00D8B9422FC6756900E77137 /* Embed App Clips */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				00D8B8EE2FC5363800E77137 /* PBXTargetDependency */,
+				00D8B93C2FC6756900E77137 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				00E597372FC38C760074E933 /* VaptVupt */,
@@ -279,6 +437,17 @@
 					00D8B8D82FC5363700E77137 = {
 						CreatedOnToolsVersion = 26.5;
 					};
+					00D8B9182FC6756800E77137 = {
+						CreatedOnToolsVersion = 26.5;
+					};
+					00D8B9282FC6756900E77137 = {
+						CreatedOnToolsVersion = 26.5;
+						TestTargetID = 00D8B9182FC6756800E77137;
+					};
+					00D8B9322FC6756900E77137 = {
+						CreatedOnToolsVersion = 26.5;
+						TestTargetID = 00D8B9182FC6756800E77137;
+					};
 					00E597342FC38C760074E933 = {
 						CreatedOnToolsVersion = 26.5;
 					};
@@ -310,12 +479,36 @@
 				00E597432FC38C760074E933 /* VaptVuptTests */,
 				00E5974D2FC38C760074E933 /* VaptVuptUITests */,
 				00D8B8D82FC5363700E77137 /* VaptVuptWidgetExtension */,
+				00D8B9182FC6756800E77137 /* VaptVuptClip */,
+				00D8B9282FC6756900E77137 /* VaptVuptClipTests */,
+				00D8B9322FC6756900E77137 /* VaptVuptClipUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		00D8B8D72FC5363700E77137 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		00D8B9172FC6756800E77137 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		00D8B9272FC6756900E77137 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		00D8B9312FC6756900E77137 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -353,6 +546,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		00D8B9152FC6756800E77137 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		00D8B9252FC6756900E77137 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		00D8B92F2FC6756900E77137 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		00E597312FC38C760074E933 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -381,6 +595,21 @@
 			isa = PBXTargetDependency;
 			target = 00D8B8D82FC5363700E77137 /* VaptVuptWidgetExtension */;
 			targetProxy = 00D8B8ED2FC5363800E77137 /* PBXContainerItemProxy */;
+		};
+		00D8B92B2FC6756900E77137 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 00D8B9182FC6756800E77137 /* VaptVuptClip */;
+			targetProxy = 00D8B92A2FC6756900E77137 /* PBXContainerItemProxy */;
+		};
+		00D8B9352FC6756900E77137 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 00D8B9182FC6756800E77137 /* VaptVuptClip */;
+			targetProxy = 00D8B9342FC6756900E77137 /* PBXContainerItemProxy */;
+		};
+		00D8B93C2FC6756900E77137 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 00D8B9182FC6756800E77137 /* VaptVuptClip */;
+			targetProxy = 00D8B93B2FC6756900E77137 /* PBXContainerItemProxy */;
 		};
 		00E597462FC38C760074E933 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -450,6 +679,154 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		00D8B9402FC6756900E77137 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = VaptVuptClip/VaptVuptClip.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = VaptVuptClip/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = VaptVupt;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Any.VaptVupt.Clip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		00D8B9412FC6756900E77137 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = VaptVuptClip/VaptVuptClip.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = VaptVuptClip/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = VaptVupt;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Any.VaptVupt.Clip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		00D8B9442FC6756900E77137 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Any.VaptVupt.VaptVuptClipTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VaptVuptClip.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/VaptVuptClip";
+			};
+			name = Debug;
+		};
+		00D8B9452FC6756900E77137 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Any.VaptVupt.VaptVuptClipTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VaptVuptClip.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/VaptVuptClip";
+			};
+			name = Release;
+		};
+		00D8B9472FC6756900E77137 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Any.VaptVupt.VaptVuptClipUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = VaptVuptClip;
+			};
+			name = Debug;
+		};
+		00D8B9482FC6756900E77137 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Any.VaptVupt.VaptVuptClipUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = VaptVuptClip;
 			};
 			name = Release;
 		};
@@ -722,6 +1099,33 @@
 			buildConfigurations = (
 				00D8B8F22FC5363800E77137 /* Debug */,
 				00D8B8F32FC5363800E77137 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		00D8B93F2FC6756900E77137 /* Build configuration list for PBXNativeTarget "VaptVuptClip" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00D8B9402FC6756900E77137 /* Debug */,
+				00D8B9412FC6756900E77137 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		00D8B9432FC6756900E77137 /* Build configuration list for PBXNativeTarget "VaptVuptClipTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00D8B9442FC6756900E77137 /* Debug */,
+				00D8B9452FC6756900E77137 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		00D8B9462FC6756900E77137 /* Build configuration list for PBXNativeTarget "VaptVuptClipUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00D8B9472FC6756900E77137 /* Debug */,
+				00D8B9482FC6756900E77137 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
