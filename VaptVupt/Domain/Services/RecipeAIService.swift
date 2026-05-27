@@ -22,6 +22,72 @@ final class RecipeAIService {
         case text   // Texto colado pelo usuário
     }
 
+    /// Modo improviso: dada a lista de ingredientes disponíveis na despensa,
+    /// devolve uma `Recipe` curta e plausível usando apenas o que se tem em
+    /// casa. Em produção, essa função delegaria ao LLM com um prompt do tipo
+    /// "Sugira uma receita usando apenas: X, Y, Z". Aqui aplicamos heurísticas
+    /// determinísticas para entregar uma simulação convincente no MVP.
+    func suggestRecipe(from pantryNames: [String]) async -> Recipe? {
+        try? await Task.sleep(nanoseconds: 1_200_000_000)
+        guard !pantryNames.isEmpty else { return nil }
+
+        let cleanedNames = pantryNames.map { $0.capitalized }
+        let title = improviseTitle(from: cleanedNames)
+        let ingredients = cleanedNames.prefix(8).map { name in
+            Ingredient(name: name, quantity: defaultQuantity(for: name).0, unit: defaultQuantity(for: name).1)
+        }
+        let steps = improviseSteps(for: cleanedNames)
+        let prep = max(10, min(30, cleanedNames.count * 3))
+        let subcategories = inferSubcategories(from: cleanedNames.joined(separator: " ").lowercased())
+
+        return Recipe(
+            title: title,
+            description: "Receita improvisada com o que você tem em casa.",
+            prepTime: prep,
+            servings: 2,
+            imageURL: nil,
+            subcategories: subcategories,
+            difficulty: .easy,
+            ingredients: ingredients,
+            steps: steps,
+            dietaryRestrictions: []
+        )
+    }
+
+    private func improviseTitle(from names: [String]) -> String {
+        let highlight = names.prefix(2).joined(separator: " com ")
+        return highlight.isEmpty ? "Improviso da despensa" : "Improviso de \(highlight)"
+    }
+
+    private func defaultQuantity(for name: String) -> (Double, IngredientUnit) {
+        let n = name.lowercased()
+        if n.contains("ovo")     { return (2, .unit) }
+        if n.contains("leite")   { return (200, .milliliter) }
+        if n.contains("arroz")   { return (1, .cup) }
+        if n.contains("feijão")  { return (1, .cup) }
+        if n.contains("frango")  { return (250, .gram) }
+        if n.contains("queijo")  { return (50, .gram) }
+        if n.contains("tomate")  { return (2, .unit) }
+        if n.contains("azeite")  { return (1, .spoon) }
+        if n.contains("sal")     { return (1, .toTaste) }
+        if n.contains("pimenta") { return (1, .toTaste) }
+        return (1, .unit)
+    }
+
+    private func improviseSteps(for names: [String]) -> [Step] {
+        let head = names.prefix(3).joined(separator: ", ")
+        let tail = names.dropFirst(3).joined(separator: ", ")
+        var lines: [String] = []
+        lines.append("Separe os ingredientes principais (\(head)) e deixe à mão.")
+        if !tail.isEmpty {
+            lines.append("Reserve os complementos (\(tail)) para o final.")
+        }
+        lines.append("Aqueça uma frigideira em fogo médio com um fio de azeite.")
+        lines.append("Combine os ingredientes principais e cozinhe por 8-10 minutos.")
+        lines.append("Tempere a gosto e finalize com os complementos. Sirva imediatamente.")
+        return lines.enumerated().map { Step(sequence: $0 + 1, instruction: $1, imageURL: nil) }
+    }
+
     /// Função principal exigida pela especificação. Recebe um texto bruto e devolve
     /// uma `Recipe?` estruturada, inferindo categorias com base no conteúdo.
     func parseRecipeFromText(_ text: String, source: InputSource = .text) async -> Recipe? {

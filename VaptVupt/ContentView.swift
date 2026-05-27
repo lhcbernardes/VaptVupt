@@ -14,41 +14,40 @@ import SwiftData
 struct RootTabView: View {
     @Bindable var dashboardViewModel: DashboardViewModel
 
+    @Environment(\.horizontalSizeClass) private var sizeClass
+
     @State private var selectedTab: Tab = .home
     @State private var isUploadPresented: Bool = false
     @State private var importedRecipe: Recipe? = nil
 
-    enum Tab: Hashable {
+    enum Tab: Hashable, CaseIterable {
         case home
         case upload
         case settings
+
+        var label: String {
+            switch self {
+            case .home:     "Início"
+            case .upload:   "Adicionar"
+            case .settings: "Ajustes"
+            }
+        }
+
+        var icon: String {
+            switch self {
+            case .home:     "house.fill"
+            case .upload:   "plus.circle.fill"
+            case .settings: "gearshape.fill"
+            }
+        }
     }
 
     var body: some View {
-        TabView(selection: $selectedTab) {
-            DashboardView(viewModel: dashboardViewModel)
-                .tabItem {
-                    Label("Início", systemImage: "house.fill")
-                }
-                .tag(Tab.home)
-
-            // Aba central — abre upload via sheet, mantendo a tab no Home.
-            Color.clear
-                .tabItem {
-                    Label("Adicionar", systemImage: "plus.circle.fill")
-                }
-                .tag(Tab.upload)
-
-            SettingsView()
-                .tabItem {
-                    Label("Ajustes", systemImage: "gearshape.fill")
-                }
-                .tag(Tab.settings)
-        }
-        .onChange(of: selectedTab) { _, newValue in
-            if newValue == .upload {
-                isUploadPresented = true
-                selectedTab = .home
+        Group {
+            if sizeClass == .regular {
+                splitLayout
+            } else {
+                compactTabs
             }
         }
         .sheet(isPresented: $isUploadPresented) {
@@ -68,6 +67,78 @@ struct RootTabView: View {
                 importedRecipe = recipe
             }
         }
+    }
+
+    // MARK: - Compact (iPhone)
+
+    private var compactTabs: some View {
+        TabView(selection: $selectedTab) {
+            DashboardView(viewModel: dashboardViewModel)
+                .tabItem { Label(Tab.home.label, systemImage: Tab.home.icon) }
+                .tag(Tab.home)
+
+            Color.clear
+                .tabItem { Label(Tab.upload.label, systemImage: Tab.upload.icon) }
+                .tag(Tab.upload)
+
+            SettingsView()
+                .tabItem { Label(Tab.settings.label, systemImage: Tab.settings.icon) }
+                .tag(Tab.settings)
+        }
+        .onChange(of: selectedTab) { _, newValue in
+            if newValue == .upload {
+                isUploadPresented = true
+                selectedTab = .home
+            }
+        }
+    }
+
+    // MARK: - Regular (iPad)
+
+    private var splitLayout: some View {
+        NavigationSplitView {
+            List {
+                Section("Cozinhar") {
+                    sidebarRow(.home)
+                }
+                Section("Ações") {
+                    Button {
+                        isUploadPresented = true
+                    } label: {
+                        Label(Tab.upload.label, systemImage: Tab.upload.icon)
+                            .foregroundStyle(Theme.Colors.accent)
+                    }
+                }
+                Section("Conta") {
+                    sidebarRow(.settings)
+                }
+            }
+            .navigationTitle("VaptVupt")
+        } detail: {
+            switch selectedTab {
+            case .home, .upload:
+                DashboardView(viewModel: dashboardViewModel)
+            case .settings:
+                SettingsView()
+            }
+        }
+    }
+
+    private func sidebarRow(_ tab: Tab) -> some View {
+        Button {
+            selectedTab = tab
+        } label: {
+            HStack {
+                Label(tab.label, systemImage: tab.icon)
+                Spacer()
+                if selectedTab == tab {
+                    Image(systemName: "checkmark")
+                        .foregroundStyle(Theme.Colors.accent)
+                }
+            }
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
     }
 }
 

@@ -22,12 +22,35 @@ struct VaptVuptApp: App {
     @AppStorage("vaptvupt.hasSeenOnboarding") private var hasSeenOnboarding: Bool = false
 
     /// Container SwiftData usado para o histórico de preparos
-    /// (`CookedRecipeEntry`) e anotações pessoais (`RecipeNote`).
-    /// Os erros são fatais aqui porque o app não é capaz de funcionar
-    /// de forma consistente sem persistência.
+    /// (`CookedRecipeEntry`), anotações pessoais (`RecipeNote`) e o meal
+    /// planner (`PlannedMeal`). Pronto para CloudKit Sync — basta marcar
+    /// a capability iCloud + CloudKit no target e o ModelConfiguration
+    /// abaixo passa a sincronizar automaticamente entre dispositivos.
+    ///
+    /// **Pré-requisitos no Xcode UI** para habilitar o sync:
+    ///   1. Signing & Capabilities → + Capability → iCloud.
+    ///   2. Marque "CloudKit" e crie/escolha um container
+    ///      (ex.: `iCloud.com.lhcbernardes.vaptvupt`).
+    ///   3. Signing & Capabilities → + Capability → Background Modes →
+    ///      marque "Remote notifications".
+    ///   4. Modelos `@Model` precisam ter todas as propriedades opcionais
+    ///      OU com valor padrão — o que já é o caso aqui.
     private let modelContainer: ModelContainer = {
+        let schema = Schema([
+            CookedRecipeEntry.self,
+            RecipeNote.self,
+            PlannedMeal.self
+        ])
+        // .automatic = SwiftData decide entre sync remoto e local conforme
+        // a presença da capability iCloud. Sem a capability, comporta-se
+        // exatamente como o container local atual.
+        let config = ModelConfiguration(
+            schema: schema,
+            isStoredInMemoryOnly: false,
+            cloudKitDatabase: .automatic
+        )
         do {
-            return try ModelContainer(for: CookedRecipeEntry.self, RecipeNote.self)
+            return try ModelContainer(for: schema, configurations: [config])
         } catch {
             fatalError("Falha ao iniciar o ModelContainer do SwiftData: \(error)")
         }

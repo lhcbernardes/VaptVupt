@@ -14,6 +14,8 @@ final class DashboardViewModel {
     var searchQuery: String = ""
     var dietaryFilters: Set<DietaryRestriction> = []
     var isPantrySheetPresented: Bool = false
+    var isMealPlannerPresented: Bool = false
+    var isImprovisePresented: Bool = false
     private(set) var allRecipes: [Recipe]
 
     // MARK: - Init

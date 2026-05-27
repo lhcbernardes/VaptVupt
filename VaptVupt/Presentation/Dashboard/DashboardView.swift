@@ -31,6 +31,7 @@ struct DashboardView: View {
                     header
                     recipeOfTheDayHero
                     pantryCTA
+                    plannerAndImproviseRow
                     surpriseCard
                     timeFilterRow
                     dietaryFilterRow
@@ -64,6 +65,15 @@ struct DashboardView: View {
             .sheet(isPresented: $viewModel.isPantrySheetPresented) {
                 PantryView()
                     .presentationDetents([.large])
+            }
+            .sheet(isPresented: $viewModel.isMealPlannerPresented) {
+                MealPlannerView(allRecipes: viewModel.allRecipes)
+            }
+            .sheet(isPresented: $viewModel.isImprovisePresented) {
+                ImproviseSuggestionView { recipe in
+                    viewModel.append(recipe: recipe)
+                }
+                .environment(pantry)
             }
         }
     }
@@ -183,6 +193,55 @@ struct DashboardView: View {
         case 1:  return "1 ingrediente cadastrado"
         default: return "\(count) ingredientes cadastrados"
         }
+    }
+
+    // MARK: - Planner & Improvise row
+
+    private var plannerAndImproviseRow: some View {
+        HStack(spacing: Theme.Spacing.md) {
+            shortcutCard(
+                title: "Cardápio da semana",
+                subtitle: "Planejar refeições",
+                icon: "calendar",
+                tint: Theme.Colors.accent
+            ) { viewModel.isMealPlannerPresented = true }
+
+            shortcutCard(
+                title: "Modo improviso",
+                subtitle: "Sugerir da despensa",
+                icon: "wand.and.stars",
+                tint: Color(red: 0.85, green: 0.35, blue: 0.55)
+            ) { viewModel.isImprovisePresented = true }
+        }
+    }
+
+    private func shortcutCard(title: String, subtitle: String, icon: String, tint: Color, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            VStack(alignment: .leading, spacing: Theme.Spacing.sm) {
+                ZStack {
+                    Circle()
+                        .fill(tint.opacity(0.18))
+                        .frame(width: 36, height: 36)
+                    Image(systemName: icon)
+                        .font(.callout.weight(.semibold))
+                        .foregroundStyle(tint)
+                }
+                Text(title)
+                    .font(Theme.Typography.cardTitle)
+                    .foregroundStyle(Theme.Colors.primaryText)
+                    .lineLimit(1)
+                Text(subtitle)
+                    .font(Theme.Typography.caption)
+                    .foregroundStyle(Theme.Colors.secondaryText)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(Theme.Spacing.md)
+            .background(
+                RoundedRectangle(cornerRadius: Theme.Radius.medium, style: .continuous)
+                    .fill(Theme.Colors.surface)
+            )
+        }
+        .buttonStyle(.plain)
     }
 
     // MARK: - Surprise card

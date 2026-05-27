@@ -12,7 +12,10 @@ import SwiftData
 
 @Model
 final class RecipeNote {
-    @Attribute(.unique) var recipeID: UUID
+    // CloudKit não suporta `@Attribute(.unique)`. A unicidade por
+    // `recipeID` é garantida em aplicação (a view busca/atualiza pelo
+    // primeiro match e nunca insere duplicatas).
+    var recipeID: UUID
     var text: String
     var updatedAt: Date
 
