@@ -1,0 +1,19 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["TEAMID.Any.VaptVupt", "TEAMID.Any.VaptVupt.Clip"],
+        "components": [
+          {
+            "/": "/recipe",
+            "?": { "data": "*" },
+            "comment": "Abre uma receita compartilhada via vaptvupt.app/recipe?data=…"
+          }
+        ]
+      }
+    ]
+  },
+  "appclips": {
+    "apps": ["TEAMID.Any.VaptVupt.Clip"]
+  }
+}

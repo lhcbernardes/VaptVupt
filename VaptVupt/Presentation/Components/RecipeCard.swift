@@ -11,13 +11,16 @@ import SwiftUI
 
 struct RecipeCard: View {
     let recipe: Recipe
+    /// Namespace usado para a hero transition entre o card e a tela de
+    /// detalhe. Quando passado, sincroniza a imagem em `matchedGeometryEffect`.
+    var heroNamespace: Namespace.ID? = nil
 
     @Environment(FavoritesStore.self) private var favorites
 
     var body: some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.sm) {
             // Imagem
-            RemoteImage(url: recipe.imageURL)
+            heroImage
                 .frame(height: 130)
                 .clipShape(RoundedRectangle(cornerRadius: Theme.Radius.medium, style: .continuous))
                 .overlay(alignment: .topTrailing) {
@@ -52,9 +55,22 @@ struct RecipeCard: View {
             RoundedRectangle(cornerRadius: Theme.Radius.large, style: .continuous)
                 .fill(Theme.Colors.surface)
         )
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(recipe.title), \(recipe.prepTimeFormatted), \(recipe.difficulty.rawValue)")
+        .accessibilityHint(favorites.isFavorite(recipe) ? "Receita favoritada." : "Toque duplo para abrir a receita.")
     }
 
     // MARK: - Subviews
+
+    @ViewBuilder
+    private var heroImage: some View {
+        if let heroNamespace {
+            RemoteImage(url: recipe.imageURL)
+                .matchedGeometryEffect(id: "recipe-hero-\(recipe.id)", in: heroNamespace)
+        } else {
+            RemoteImage(url: recipe.imageURL)
+        }
+    }
 
     private var difficultyTag: some View {
         HStack(spacing: 4) {
@@ -85,5 +101,7 @@ struct RecipeCard: View {
         .sensoryFeedback(.success, trigger: isFav) { oldValue, newValue in
             newValue && !oldValue
         }
+        .accessibilityLabel(isFav ? "Remover dos favoritos" : "Adicionar aos favoritos")
+        .accessibilityAddTraits(isFav ? [.isSelected] : [])
     }
 }

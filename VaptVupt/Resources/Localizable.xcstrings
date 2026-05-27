@@ -1,0 +1,174 @@
+{
+  "sourceLanguage" : "pt-BR",
+  "version" : "1.0",
+  "strings" : {
+    "Apoiar o dev" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Tip the dev" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Apoyar al dev" } }
+      }
+    },
+    "Apoie o desenvolvedor" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Support the developer" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Apoya al desarrollador" } }
+      }
+    },
+    "Ajustes" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Settings" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Ajustes" } }
+      }
+    },
+    "Aparência" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Appearance" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Apariencia" } }
+      }
+    },
+    "Bom dia" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Good morning" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Buenos días" } }
+      }
+    },
+    "Boa tarde" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Good afternoon" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Buenas tardes" } }
+      }
+    },
+    "Boa noite" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Good evening" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Buenas noches" } }
+      }
+    },
+    "Cardápio da semana" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "This week's menu" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Menú de la semana" } }
+      }
+    },
+    "Categorias" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Categories" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Categorías" } }
+      }
+    },
+    "Concluir" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Done" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Listo" } }
+      }
+    },
+    "Conquistas" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Achievements" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Logros" } }
+      }
+    },
+    "Iniciar Modo Cozinha" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Start Cooking Mode" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Iniciar Modo Cocina" } }
+      }
+    },
+    "Início" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Home" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Inicio" } }
+      }
+    },
+    "Ingredientes" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Ingredients" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Ingredientes" } }
+      }
+    },
+    "Minha Despensa" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "My Pantry" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Mi Despensa" } }
+      }
+    },
+    "Modo Improviso" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Improvise Mode" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Modo Improvisar" } }
+      }
+    },
+    "Modo de preparo" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Steps" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Preparación" } }
+      }
+    },
+    "Nova Receita" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "New Recipe" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Nueva Receta" } }
+      }
+    },
+    "O que vai cozinhar hoje?" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "What are you cooking today?" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "¿Qué vas a cocinar hoy?" } }
+      }
+    },
+    "Pagar um café para o dev" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Buy the dev a coffee" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Invitar un café al dev" } }
+      }
+    },
+    "Porções" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Servings" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Porciones" } }
+      }
+    },
+    "Pronto pra fazer" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Ready to cook" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Listo para cocinar" } }
+      }
+    },
+    "RECEITA DO DIA" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "RECIPE OF THE DAY" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "RECETA DEL DÍA" } }
+      }
+    },
+    "Seus Favoritos" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Your Favorites" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Tus Favoritos" } }
+      }
+    },
+    "Sobre" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "About" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Acerca de" } }
+      }
+    },
+    "Surpreenda-me" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Surprise me" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Sorpréndeme" } }
+      }
+    },
+    "Todas as receitas" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "All recipes" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Todas las recetas" } }
+      }
+    },
+    "Você cozinhou recentemente" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "You cooked recently" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Cocinaste recientemente" } }
+      }
+    }
+  }
+}

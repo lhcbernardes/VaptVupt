@@ -18,6 +18,7 @@ struct DashboardView: View {
     @Query(sort: \CookedRecipeEntry.cookedAt, order: .reverse) private var history: [CookedRecipeEntry]
 
     @State private var path = NavigationPath()
+    @Namespace private var heroNamespace
 
     private let gridColumns = [
         GridItem(.flexible(), spacing: Theme.Spacing.md),
@@ -61,6 +62,7 @@ struct DashboardView: View {
             }
             .navigationDestination(for: Recipe.self) { recipe in
                 RecipeDetailView(viewModel: RecipeDetailViewModel(recipe: recipe))
+                    .navigationTransition(.zoom(sourceID: recipe.id, in: heroNamespace))
             }
             .sheet(isPresented: $viewModel.isPantrySheetPresented) {
                 PantryView()
@@ -375,6 +377,7 @@ struct DashboardView: View {
                         ForEach(cookable) { recipe in
                             NavigationLink(value: recipe) {
                                 pantryMatchCard(for: recipe)
+                                    .matchedTransitionSource(id: recipe.id, in: heroNamespace)
                             }
                             .buttonStyle(.plain)
                         }
@@ -423,6 +426,7 @@ struct DashboardView: View {
                             NavigationLink(value: recipe) {
                                 RecipeCard(recipe: recipe)
                                     .frame(width: 220)
+                                    .matchedTransitionSource(id: recipe.id, in: heroNamespace)
                             }
                             .buttonStyle(.plain)
                         }
@@ -451,6 +455,7 @@ struct DashboardView: View {
                             NavigationLink(value: recipe) {
                                 RecipeCard(recipe: recipe)
                                     .frame(width: 220)
+                                    .matchedTransitionSource(id: recipe.id, in: heroNamespace)
                             }
                             .buttonStyle(.plain)
                         }
@@ -473,6 +478,7 @@ struct DashboardView: View {
                     ForEach(viewModel.filteredRecipes) { recipe in
                         NavigationLink(value: recipe) {
                             RecipeCard(recipe: recipe)
+                                .matchedTransitionSource(id: recipe.id, in: heroNamespace)
                         }
                         .buttonStyle(.plain)
                     }

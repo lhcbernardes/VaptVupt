@@ -23,6 +23,7 @@ struct SettingsView: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: Theme.Spacing.lg) {
+                    achievementsSection
                     appearanceSection
                     notificationsSection
                     historySection
@@ -142,6 +143,85 @@ struct SettingsView: View {
                 RoundedRectangle(cornerRadius: Theme.Radius.medium, style: .continuous)
                     .fill(Theme.Colors.surface)
             )
+        }
+    }
+
+    private var achievementsSection: some View {
+        let snapshot = StreakService.snapshot(from: historyEntries)
+        let unlocked = Set(StreakService.unlockedBadges(from: historyEntries).map(\.id))
+
+        return section(title: "Conquistas") {
+            VStack(alignment: .leading, spacing: Theme.Spacing.md) {
+                streakHeader(snapshot)
+                badgesGrid(unlocked: unlocked)
+            }
+            .padding(Theme.Spacing.md)
+            .background(
+                RoundedRectangle(cornerRadius: Theme.Radius.medium, style: .continuous)
+                    .fill(Theme.Colors.surface)
+            )
+        }
+    }
+
+    private func streakHeader(_ snapshot: StreakService.Snapshot) -> some View {
+        HStack(spacing: Theme.Spacing.md) {
+            ZStack {
+                Circle()
+                    .fill(Color.orange.opacity(0.18))
+                    .frame(width: 56, height: 56)
+                Image(systemName: "flame.fill")
+                    .font(.title2)
+                    .foregroundStyle(.orange)
+            }
+            VStack(alignment: .leading, spacing: 2) {
+                Text("\(snapshot.currentStreak) dia\(snapshot.currentStreak == 1 ? "" : "s") seguidos")
+                    .font(Theme.Typography.cardTitle)
+                Text(snapshot.longestStreak > snapshot.currentStreak
+                     ? "Recorde: \(snapshot.longestStreak) dias"
+                     : "Continue cozinhando!")
+                    .font(Theme.Typography.caption)
+                    .foregroundStyle(Theme.Colors.secondaryText)
+            }
+            Spacer()
+            VStack(alignment: .trailing) {
+                Text("\(snapshot.totalCount)")
+                    .font(Theme.Typography.title)
+                    .monospacedDigit()
+                Text("receitas")
+                    .font(Theme.Typography.caption)
+                    .foregroundStyle(Theme.Colors.secondaryText)
+            }
+        }
+    }
+
+    private func badgesGrid(unlocked: Set<String>) -> some View {
+        LazyVGrid(columns: [GridItem(.adaptive(minimum: 100), spacing: Theme.Spacing.sm)], spacing: Theme.Spacing.sm) {
+            ForEach(AchievementBadge.catalog) { badge in
+                let isUnlocked = unlocked.contains(badge.id)
+                VStack(spacing: Theme.Spacing.xs) {
+                    Image(systemName: badge.systemIcon)
+                        .font(.title2)
+                        .foregroundStyle(isUnlocked ? badge.tint : Theme.Colors.secondaryText.opacity(0.4))
+                    Text(badge.title)
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(isUnlocked ? Theme.Colors.primaryText : Theme.Colors.secondaryText)
+                        .lineLimit(1)
+                    Text(badge.subtitle)
+                        .font(.caption2)
+                        .foregroundStyle(Theme.Colors.secondaryText)
+                        .multilineTextAlignment(.center)
+                        .lineLimit(2)
+                }
+                .frame(maxWidth: .infinity)
+                .padding(Theme.Spacing.sm)
+                .background(
+                    RoundedRectangle(cornerRadius: Theme.Radius.medium, style: .continuous)
+                        .fill(isUnlocked ? badge.tint.opacity(0.10) : Theme.Colors.background)
+                )
+                .opacity(isUnlocked ? 1 : 0.55)
+                .accessibilityElement(children: .combine)
+                .accessibilityLabel("\(badge.title), \(isUnlocked ? "desbloqueado" : "bloqueado"). \(badge.subtitle).")
+            }
         }
     }
 
