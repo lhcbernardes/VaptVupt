@@ -117,6 +117,21 @@
 			);
 			target = 00D8B9182FC6756800E77137 /* VaptVuptClip */;
 		};
+		00D8B94E2FC6769400E77137 /* Exceptions for "VaptVupt" folder in "VaptVuptClip" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Domain/Models/DietaryRestriction.swift,
+				Domain/Models/Ingredient.swift,
+				Domain/Models/Recipe.swift,
+				Domain/Models/RecipeCategory.swift,
+				Domain/Models/Step.swift,
+				Domain/Services/RecipeShareService.swift,
+				Presentation/Components/RemoteImage.swift,
+				Presentation/Components/TagPill.swift,
+				Presentation/Theme/Theme.swift,
+			);
+			target = 00D8B9182FC6756800E77137 /* VaptVuptClip */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -150,6 +165,7 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				00D8B8FC2FC53DB600E77137 /* Exceptions for "VaptVupt" folder in "VaptVuptWidgetExtension" target */,
+				00D8B94E2FC6769400E77137 /* Exceptions for "VaptVupt" folder in "VaptVuptClip" target */,
 			);
 			path = VaptVupt;
 			sourceTree = "<group>";

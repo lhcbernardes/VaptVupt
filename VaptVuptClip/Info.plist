@@ -9,5 +9,9 @@
 		<key>NSAppClipRequestLocationConfirmation</key>
 		<false/>
 	</dict>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>vaptvupt</string>
+	</array>
 </dict>
 </plist>

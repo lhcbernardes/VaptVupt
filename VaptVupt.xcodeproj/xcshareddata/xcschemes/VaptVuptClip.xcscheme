@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme
+   LastUpgradeVersion = "2650"
+   version = "1.7">
+   <BuildAction
+      parallelizeBuildables = "YES"
+      buildImplicitDependencies = "YES"
+      buildArchitectures = "Automatic">
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "00D8B9182FC6756800E77137"
+               BuildableName = "VaptVuptClip.app"
+               BlueprintName = "VaptVuptClip"
+               ReferencedContainer = "container:VaptVupt.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
+   </BuildAction>
+   <TestAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      shouldAutocreateTestPlan = "YES">
+      <Testables>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "00D8B9322FC6756900E77137"
+               BuildableName = "VaptVuptClipUITests.xctest"
+               BlueprintName = "VaptVuptClipUITests"
+               ReferencedContainer = "container:VaptVupt.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "00D8B9282FC6756900E77137"
+               BuildableName = "VaptVuptClipTests.xctest"
+               BlueprintName = "VaptVuptClipTests"
+               ReferencedContainer = "container:VaptVupt.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
+   </TestAction>
+   <LaunchAction
+      buildConfiguration = "Debug"
+      appClipInvocationURLString = "https://vaptvupt.app/recipe?data=eyJ2IjoxLCJwYXlsb2FkIjp7InRpdGxlIjoiRnJhbmdvIEdyZWxoYWRvIGNvbSBCcsOzY29saXMiLCJkaWZmaWN1bHR5IjoiRsOhY2lsIiwiZGVzY3JpcHRpb24iOiJQcmF0byBwcm90ZWljbywgbG93IGNhcmIgZSBwcsOhdGljby4gUHJvbnRvIGVtIDI1IG1pbnV0b3MuIiwic3RlcHMiOlt7ImlkIjoiRjFCMEZBQTItMTdCNS00RUZFLTk5QzUtMzg1ODQwREUzQ0FBIiwiaW5zdHJ1Y3Rpb24iOiJUZW1wZXJlIG8gZnJhbmdvIGNvbSBzYWwsIHBpbWVudGEgZSBhbGhvIGFtYXNzYWRvLiIsInNlcXVlbmNlIjoxfSx7ImlkIjoiRUY2ODE1ODgtQzE5OS00QTQ1LTk0QUQtNjRDODg4MTUzNjY0IiwiaW5zdHJ1Y3Rpb24iOiJHcmVsaGUgbyBmcmFuZ28gcG9yIDYgbWludXRvcyBkZSBjYWRhIGxhZG8uIiwic2VxdWVuY2UiOjJ9LHsiaWQiOiI4RDczODIxOS01ODNFLTRDRTgtQkE5NS1ENTg0OTBFRDhCODAiLCJpbnN0cnVjdGlvbiI6IkNvemluaGUgbyBicsOzY29saXMgbm8gdmFwb3IgcG9yIDQgbWludXRvcy4iLCJzZXF1ZW5jZSI6M30seyJpZCI6Ijc1MTgzNTIzLUY4MjMtNDA4Ni04QzZCLTg0MUVGMjczNzNEQyIsImluc3RydWN0aW9uIjoiU2lydmEgbyBmcmFuZ28gZmF0aWFkbyBhbyBsYWRvIGRvIGJyw7Njb2xpcy4iLCJzZXF1ZW5jZSI6NH1dLCJpbmdyZWRpZW50cyI6W3sicXVhbnRpdHkiOjMwMCwiaWQiOiI5NDA1OTE3OC1GNDNGLTQzNTctQTkwNi1CNTcxQ0JGQUU3RUEiLCJuYW1lIjoiUGVpdG8gZGUgZnJhbmdvIiwidW5pdCI6ImcifSx7InF1YW50aXR5IjoyMDAsImlkIjoiODdBNUQ4NEUtREI1QS00ODAxLUI5QzQtMjQ4RjI4QUY2QTExIiwibmFtZSI6IkJyw7Njb2xpcyIsInVuaXQiOiJnIn0seyJxdWFudGl0eSI6MSwiaWQiOiJFNzk4MTMzRC1EMDlCLTQ2OEQtOTIxRC1BOTkzQkQ4NkZEMUIiLCJuYW1lIjoiQXplaXRlIGV4dHJhIHZpcmdlbSIsInVuaXQiOiJjb2xoZXIifSx7InF1YW50aXR5IjoyLCJpZCI6IjQwREUzNTM2LTYxMkQtNEVBQy1BRUFELUI4NjM3ODNDNkI4OSIsIm5hbWUiOiJBbGhvIiwidW5pdCI6InVuaWRhZGUifSx7InF1YW50aXR5IjoxLCJpZCI6IjE3MUE0RkVCLTlFRDMtNEI5QS1CODgzLTZFRTlGMDY0RjUyMCIsIm5hbWUiOiJTYWwiLCJ1bml0IjoiYSBnb3N0byJ9XSwicHJlcFRpbWUiOjI1LCJzdWJjYXRlZ29yaWVzIjpbIkFsbW_Dp28iLCJQcm90ZWljbyIsIkxvdyBDYXJiIl0sImRpZXRhcnlSZXN0cmljdGlvbnMiOlsiU2VtIEdsw7p0ZW4iLCJTZW0gTGFjdG9zZSJdLCJpZCI6IjZFRDI5Qjg2LTJFNUYtNDdFMi04QjY3LUVDMTRDNjdDMTgxQiIsInNlcnZpbmdzIjoyLCJpbWFnZVVSTCI6Imh0dHBzOi8vaW1hZ2VzLnVuc3BsYXNoLmNvbS9waG90by0xNjA0OTA4MTc2OTk3LTEyNWYyNWNjNmYzZD93PTEyMDAifX0"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      launchStyle = "0"
+      useCustomWorkingDirectory = "NO"
+      ignoresPersistentStateOnLaunch = "NO"
+      debugDocumentVersioning = "YES"
+      debugServiceExtension = "internal"
+      allowLocationSimulation = "YES"
+      queueDebuggingEnableBacktraceRecording = "Yes">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "00D8B9182FC6756800E77137"
+            BuildableName = "VaptVuptClip.app"
+            BlueprintName = "VaptVuptClip"
+            ReferencedContainer = "container:VaptVupt.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = ""
+            isEnabled = "NO">
+         </CommandLineArgument>
+      </CommandLineArguments>
+   </LaunchAction>
+   <ProfileAction
+      buildConfiguration = "Release"
+      appClipInvocationURLString = "https://vaptvupt.app/recipe?data=eyJ2IjoxLCJwYXlsb2FkIjp7InRpdGxlIjoiRnJhbmdvIEdyZWxoYWRvIGNvbSBCcsOzY29saXMiLCJkaWZmaWN1bHR5IjoiRsOhY2lsIiwiZGVzY3JpcHRpb24iOiJQcmF0byBwcm90ZWljbywgbG93IGNhcmIgZSBwcsOhdGljby4gUHJvbnRvIGVtIDI1IG1pbnV0b3MuIiwic3RlcHMiOlt7ImlkIjoiRjFCMEZBQTItMTdCNS00RUZFLTk5QzUtMzg1ODQwREUzQ0FBIiwiaW5zdHJ1Y3Rpb24iOiJUZW1wZXJlIG8gZnJhbmdvIGNvbSBzYWwsIHBpbWVudGEgZSBhbGhvIGFtYXNzYWRvLiIsInNlcXVlbmNlIjoxfSx7ImlkIjoiRUY2ODE1ODgtQzE5OS00QTQ1LTk0QUQtNjRDODg4MTUzNjY0IiwiaW5zdHJ1Y3Rpb24iOiJHcmVsaGUgbyBmcmFuZ28gcG9yIDYgbWludXRvcyBkZSBjYWRhIGxhZG8uIiwic2VxdWVuY2UiOjJ9LHsiaWQiOiI4RDczODIxOS01ODNFLTRDRTgtQkE5NS1ENTg0OTBFRDhCODAiLCJpbnN0cnVjdGlvbiI6IkNvemluaGUgbyBicsOzY29saXMgbm8gdmFwb3IgcG9yIDQgbWludXRvcy4iLCJzZXF1ZW5jZSI6M30seyJpZCI6Ijc1MTgzNTIzLUY4MjMtNDA4Ni04QzZCLTg0MUVGMjczNzNEQyIsImluc3RydWN0aW9uIjoiU2lydmEgbyBmcmFuZ28gZmF0aWFkbyBhbyBsYWRvIGRvIGJyw7Njb2xpcy4iLCJzZXF1ZW5jZSI6NH1dLCJpbmdyZWRpZW50cyI6W3sicXVhbnRpdHkiOjMwMCwiaWQiOiI5NDA1OTE3OC1GNDNGLTQzNTctQTkwNi1CNTcxQ0JGQUU3RUEiLCJuYW1lIjoiUGVpdG8gZGUgZnJhbmdvIiwidW5pdCI6ImcifSx7InF1YW50aXR5IjoyMDAsImlkIjoiODdBNUQ4NEUtREI1QS00ODAxLUI5QzQtMjQ4RjI4QUY2QTExIiwibmFtZSI6IkJyw7Njb2xpcyIsInVuaXQiOiJnIn0seyJxdWFudGl0eSI6MSwiaWQiOiJFNzk4MTMzRC1EMDlCLTQ2OEQtOTIxRC1BOTkzQkQ4NkZEMUIiLCJuYW1lIjoiQXplaXRlIGV4dHJhIHZpcmdlbSIsInVuaXQiOiJjb2xoZXIifSx7InF1YW50aXR5IjoyLCJpZCI6IjQwREUzNTM2LTYxMkQtNEVBQy1BRUFELUI4NjM3ODNDNkI4OSIsIm5hbWUiOiJBbGhvIiwidW5pdCI6InVuaWRhZGUifSx7InF1YW50aXR5IjoxLCJpZCI6IjE3MUE0RkVCLTlFRDMtNEI5QS1CODgzLTZFRTlGMDY0RjUyMCIsIm5hbWUiOiJTYWwiLCJ1bml0IjoiYSBnb3N0byJ9XSwicHJlcFRpbWUiOjI1LCJzdWJjYXRlZ29yaWVzIjpbIkFsbW_Dp28iLCJQcm90ZWljbyIsIkxvdyBDYXJiIl0sImRpZXRhcnlSZXN0cmljdGlvbnMiOlsiU2VtIEdsw7p0ZW4iLCJTZW0gTGFjdG9zZSJdLCJpZCI6IjZFRDI5Qjg2LTJFNUYtNDdFMi04QjY3LUVDMTRDNjdDMTgxQiIsInNlcnZpbmdzIjoyLCJpbWFnZVVSTCI6Imh0dHBzOi8vaW1hZ2VzLnVuc3BsYXNoLmNvbS9waG90by0xNjA0OTA4MTc2OTk3LTEyNWYyNWNjNmYzZD93PTEyMDAifX0"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      savedToolIdentifier = ""
+      useCustomWorkingDirectory = "NO"
+      debugDocumentVersioning = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "00D8B9182FC6756800E77137"
+            BuildableName = "VaptVuptClip.app"
+            BlueprintName = "VaptVuptClip"
+            ReferencedContainer = "container:VaptVupt.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+   </ProfileAction>
+   <AnalyzeAction
+      buildConfiguration = "Debug">
+   </AnalyzeAction>
+   <ArchiveAction
+      buildConfiguration = "Release"
+      revealArchiveInOrganizer = "YES">
+   </ArchiveAction>
+</Scheme>

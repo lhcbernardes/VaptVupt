@@ -24,6 +24,7 @@ struct VaptVuptClipApp: App {
 
     @State private var receivedRecipe: Recipe? = nil
     @State private var showEmptyState: Bool = true
+    @State private var showAppMissingAlert: Bool = false
 
     var body: some Scene {
         WindowGroup {
@@ -46,6 +47,11 @@ struct VaptVuptClipApp: App {
                 if let url = activity.webpageURL {
                     handle(url: url)
                 }
+            }
+            .alert("App completo não encontrado", isPresented: $showAppMissingAlert) {
+                Button("OK", role: .cancel) { }
+            } message: {
+                Text("Para abrir a receita no app completo, instale o VaptVupt na App Store ou rode o esquema do app principal no simulador.")
             }
         }
     }
@@ -74,13 +80,20 @@ struct VaptVuptClipApp: App {
     }
 
     /// Tenta abrir a receita no app completo (se instalado). Se não estiver,
-    /// o iOS leva o usuário à App Store via flow nativo do App Clip Card.
+    /// avisa o usuário — em produção isso seria substituído por um
+    /// `SKOverlay.AppClipConfiguration` levando à App Store.
     private func openFullApp() {
         guard
             let recipe = receivedRecipe,
             let url = RecipeShareService.encode(recipe)
         else { return }
-        UIApplication.shared.open(url)
+        UIApplication.shared.open(url, options: [:]) { success in
+            if !success {
+                Task { @MainActor in
+                    showAppMissingAlert = true
+                }
+            }
+        }
     }
 
     // MARK: - Empty state
