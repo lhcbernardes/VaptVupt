@@ -23,10 +23,19 @@ struct PantryScannerView: View {
     @State private var recentlyAdded: [String] = []
     @State private var isSupported: Bool = DataScannerViewController.isSupported
 
+    /// `true` quando o Info.plist do app não declara `NSCameraUsageDescription`.
+    /// Sem essa chave, qualquer tentativa de usar a câmera mata o processo.
+    private var cameraKeyMissing: Bool {
+        let value = Bundle.main.infoDictionary?["NSCameraUsageDescription"] as? String
+        return (value?.isEmpty ?? true)
+    }
+
     var body: some View {
         NavigationStack {
             ZStack {
-                if isSupported {
+                if cameraKeyMissing {
+                    misconfiguredView
+                } else if isSupported {
                     DataScannerRepresentable { recognized in
                         addIfRecognized(recognized)
                     }
@@ -90,6 +99,21 @@ struct PantryScannerView: View {
             Text("Câmera não disponível")
                 .font(Theme.Typography.cardTitle)
             Text("Este recurso requer iOS 16+ e um aparelho com câmera traseira compatível.")
+                .font(Theme.Typography.caption)
+                .multilineTextAlignment(.center)
+                .foregroundStyle(Theme.Colors.secondaryText)
+                .padding(.horizontal, Theme.Spacing.lg)
+        }
+    }
+
+    private var misconfiguredView: some View {
+        VStack(spacing: Theme.Spacing.md) {
+            Image(systemName: "exclamationmark.triangle.fill")
+                .font(.largeTitle)
+                .foregroundStyle(.orange)
+            Text("Câmera não configurada")
+                .font(Theme.Typography.cardTitle)
+            Text("Adicione NSCameraUsageDescription no Info.plist do app para usar o scanner da Despensa.")
                 .font(Theme.Typography.caption)
                 .multilineTextAlignment(.center)
                 .foregroundStyle(Theme.Colors.secondaryText)

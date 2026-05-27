@@ -56,6 +56,13 @@ final class VoiceCommandRecognizer {
     private(set) var isListening: Bool = false
     private(set) var permissionDenied: Bool = false
 
+    /// `true` quando o Info.plist do app não declara as chaves de uso
+    /// necessárias (`NSSpeechRecognitionUsageDescription` e
+    /// `NSMicrophoneUsageDescription`). Sem elas, qualquer chamada ao
+    /// `SFSpeechRecognizer.requestAuthorization` mata o processo. A View
+    /// observa essa flag e exibe um alerta amigável em vez de tentar.
+    private(set) var infoPlistKeysMissing: Bool = false
+
     // MARK: - Engine
 
     private let recognizer = SFSpeechRecognizer(locale: Locale(identifier: "pt_BR"))
@@ -70,8 +77,18 @@ final class VoiceCommandRecognizer {
     // MARK: - Public API
 
     /// Pede permissão (Speech + Microfone) e inicia escuta. Idempotente.
+    /// Antes de chamar a API que mata o processo se a chave Info.plist
+    /// estiver ausente, validamos o bundle.
     func start() async {
         guard !isListening else { return }
+
+        let info = Bundle.main.infoDictionary ?? [:]
+        let hasSpeechKey = (info["NSSpeechRecognitionUsageDescription"] as? String)?.isEmpty == false
+        let hasMicKey = (info["NSMicrophoneUsageDescription"] as? String)?.isEmpty == false
+        guard hasSpeechKey, hasMicKey else {
+            infoPlistKeysMissing = true
+            return
+        }
 
         let speechGranted = await requestSpeechAuthorization()
         let micGranted = await requestMicrophonePermission()

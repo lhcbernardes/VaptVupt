@@ -33,6 +33,7 @@ struct CookingModeView: View {
     @State private var isMultiTimerSheetPresented: Bool = false
     @State private var photoPickerItem: PhotosPickerItem? = nil
     @State private var isFinishSheetPresented: Bool = false
+    @State private var isVoiceMisconfigAlertPresented: Bool = false
 
     private var steps: [Step] { recipe.steps }
 
@@ -83,6 +84,11 @@ struct CookingModeView: View {
                 onSave: { savePhotoToHistory(); isFinishSheetPresented = false; dismiss() }
             )
             .presentationDetents([.medium])
+        }
+        .alert("Comandos de voz indisponíveis", isPresented: $isVoiceMisconfigAlertPresented) {
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text("Adicione no Info.plist do app as chaves NSSpeechRecognitionUsageDescription e NSMicrophoneUsageDescription para usar comandos de voz no Modo Cozinha.")
         }
     }
 
@@ -262,8 +268,15 @@ struct CookingModeView: View {
                 voiceRecognizer.stop()
                 isVoiceEnabled = false
             } else {
-                isVoiceEnabled = true
-                Task { await voiceRecognizer.start() }
+                Task {
+                    await voiceRecognizer.start()
+                    if voiceRecognizer.infoPlistKeysMissing {
+                        isVoiceMisconfigAlertPresented = true
+                        isVoiceEnabled = false
+                    } else {
+                        isVoiceEnabled = voiceRecognizer.isListening
+                    }
+                }
             }
         } label: {
             Image(systemName: isVoiceEnabled ? "mic.fill" : "mic.slash")
