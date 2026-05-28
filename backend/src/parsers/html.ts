@@ -7,7 +7,7 @@ import * as cheerio from "cheerio";
 
 const FETCH_TIMEOUT_MS = 15_000;
 const USER_AGENT =
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36 (KHTML, like Gecko) VaptVuptParser/1.0";
+  "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36";
 
 export interface PageContent {
   html: string;
@@ -41,7 +41,7 @@ export function extractOpenGraph($: cheerio.CheerioAPI): {
 } {
   const pick = (prop: string) => $(`meta[property="${prop}"]`).attr("content")?.trim();
   return {
-    title: pick("og:title") ?? $("title").first().text().trim() || undefined,
+    title: pick("og:title") ?? ($("title").first().text().trim() || undefined),
     description: pick("og:description") ?? $('meta[name="description"]').attr("content")?.trim(),
     image: pick("og:image"),
   };

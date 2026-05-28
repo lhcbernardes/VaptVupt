@@ -120,7 +120,7 @@ export const RECIPE_JSON_SCHEMA = {
         additionalProperties: false,
         required: ["sequence", "instruction"],
         properties: {
-          sequence: { type: "integer", minimum: 1 },
+          sequence: { type: "integer" },
           instruction: { type: "string" },
         },
       },

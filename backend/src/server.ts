@@ -28,7 +28,9 @@ async function main() {
     throw new Error("ANTHROPIC_API_KEY is required.");
   }
   if (!process.env.OPENAI_API_KEY) {
-    throw new Error("OPENAI_API_KEY is required.");
+    console.warn(
+      "[startup] OPENAI_API_KEY not set — video URLs (Instagram/TikTok/YouTube) will fail with a 500 from the Whisper client.",
+    );
   }
 
   const app = Fastify({ logger: { level: process.env.LOG_LEVEL ?? "info" } });
