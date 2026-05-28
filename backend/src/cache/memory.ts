@@ -14,8 +14,8 @@ interface Entry {
 }
 
 export interface CacheStore {
-  get(key: string): Recipe | null;
-  set(key: string, recipe: Recipe): void;
+  get(key: string): Recipe | null | Promise<Recipe | null>;
+  set(key: string, recipe: Recipe): void | Promise<void>;
 }
 
 export function createMemoryCache(maxEntries = 500, ttlMs = 1000 * 60 * 60 * 24): CacheStore {

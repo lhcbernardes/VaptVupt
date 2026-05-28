@@ -31,7 +31,11 @@ Regras:
 9. Passos: numere sequencialmente começando em 1, mantenha instruções curtas e acionáveis.
 10. NÃO invente ingredientes que não estão no texto. Se faltar informação, prefira ser conservador.`;
 
-export async function structureRecipe(rawText: string, sourceHint?: string): Promise<Recipe> {
+export async function structureRecipe(
+  rawText: string,
+  sourceHint?: string,
+  logger?: any,
+): Promise<Recipe> {
   const userMessage = sourceHint
     ? `Fonte: ${sourceHint}\n\nTexto bruto da receita:\n\n${rawText}`
     : `Texto bruto da receita:\n\n${rawText}`;
@@ -55,7 +59,9 @@ export async function structureRecipe(rawText: string, sourceHint?: string): Pro
       },
     ],
     messages: [{ role: "user", content: userMessage }],
-  });
+  } as any);
+
+  logUsage(response.usage, logger);
 
   // With `output_config.format`, the first text block is guaranteed JSON.
   const textBlock = response.content.find((b) => b.type === "text");
@@ -70,14 +76,28 @@ export async function structureRecipe(rawText: string, sourceHint?: string): Pro
 }
 
 /** Telemetry: log cache hit ratio so we can verify the prompt prefix is being reused. */
-export function logUsage(usage: Anthropic.Messages.Usage | undefined): void {
+export function logUsage(usage: Anthropic.Messages.Usage | undefined, logger?: any): void {
   if (!usage) return;
   const totalInput =
-    usage.input_tokens +
-    (usage.cache_creation_input_tokens ?? 0) +
-    (usage.cache_read_input_tokens ?? 0);
+    usage.input_tokens + (usage.cache_creation_input_tokens ?? 0) + (usage.cache_read_input_tokens ?? 0);
   const cachePct = totalInput > 0 ? Math.round(((usage.cache_read_input_tokens ?? 0) / totalInput) * 100) : 0;
-  console.log(
-    `[anthropic] in=${usage.input_tokens} cache_write=${usage.cache_creation_input_tokens ?? 0} cache_read=${usage.cache_read_input_tokens ?? 0} out=${usage.output_tokens} (cache_hit=${cachePct}%)`,
-  );
+
+  const msg = `[anthropic] in=${usage.input_tokens} cache_write=${usage.cache_creation_input_tokens ?? 0} cache_read=${usage.cache_read_input_tokens ?? 0} out=${usage.output_tokens} (cache_hit=${cachePct}%)`;
+
+  if (logger && typeof logger.info === "function") {
+    logger.info(
+      {
+        telemetry: {
+          inputTokens: usage.input_tokens,
+          cacheWriteTokens: usage.cache_creation_input_tokens ?? 0,
+          cacheReadTokens: usage.cache_read_input_tokens ?? 0,
+          outputTokens: usage.output_tokens,
+          cacheHitPercentage: cachePct,
+        },
+      },
+      msg,
+    );
+  } else {
+    console.log(msg);
+  }
 }

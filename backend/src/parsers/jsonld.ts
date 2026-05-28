@@ -75,6 +75,8 @@ export function renderRecipeAsText(recipe: JsonLdRecipe): string {
   const lines: string[] = [];
   if (recipe.name) lines.push(`Título: ${recipe.name}`);
   if (recipe.description) lines.push(`\nDescrição: ${recipe.description}`);
+  const imgUrl = pickImage(recipe);
+  if (imgUrl) lines.push(`Imagem: ${imgUrl}`);
   if (recipe.recipeYield) lines.push(`\nRendimento: ${stringify(recipe.recipeYield)}`);
   if (recipe.totalTime) lines.push(`Tempo total: ${recipe.totalTime}`);
   else if (recipe.cookTime) lines.push(`Tempo de cozimento: ${recipe.cookTime}`);

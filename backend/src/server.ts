@@ -12,12 +12,10 @@ import cors from "@fastify/cors";
 import { z } from "zod";
 import { extractFromURL } from "./parsers/index.js";
 import { logUsage, structureRecipe } from "./llm/anthropic.js";
-import { createMemoryCache } from "./cache/memory.js";
+import { createHybridCache } from "./cache/redis.js";
 
 const PORT = Number(process.env.PORT ?? 3000);
 const APP_API_KEY = process.env.APP_API_KEY ?? "";
-
-const cache = createMemoryCache();
 
 const ParseRequestSchema = z.object({
   url: z.string().url(),
@@ -35,6 +33,8 @@ async function main() {
 
   const app = Fastify({ logger: { level: process.env.LOG_LEVEL ?? "info" } });
   await app.register(cors, { origin: true });
+
+  const cache = createHybridCache(process.env.REDIS_URL, app.log);
 
   // Auth gate — only enforced when APP_API_KEY is set.
   app.addHook("onRequest", async (req, reply) => {
@@ -57,16 +57,16 @@ async function main() {
     const url = new URL(parsed.data.url);
     const cacheKey = url.toString();
 
-    const hit = cache.get(cacheKey);
+    const hit = await cache.get(cacheKey);
     if (hit) {
       app.log.info({ url: cacheKey }, "cache hit");
       return { recipe: hit, cached: true };
     }
 
     try {
-      const extracted = await extractFromURL(url);
-      const recipe = await structureRecipe(extracted.rawText, extracted.sourceHint);
-      cache.set(cacheKey, recipe);
+      const extracted = await extractFromURL(url, req.log);
+      const recipe = await structureRecipe(extracted.rawText, extracted.sourceHint, req.log);
+      await cache.set(cacheKey, recipe);
       return { recipe, cached: false };
     } catch (err) {
       const message = err instanceof Error ? err.message : "unknown_error";

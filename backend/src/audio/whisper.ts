@@ -17,5 +17,5 @@ export async function transcribe(filePath: string, languageHint = "pt"): Promise
     response_format: "text",
   });
   // `text` response format already returns a plain string.
-  return (typeof result === "string" ? result : result.text).trim();
+  return (typeof result === "string" ? result : (result as any).text).trim();
 }

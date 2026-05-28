@@ -19,9 +19,9 @@ export interface ExtractedSource {
   sourceHint: string;
 }
 
-export async function extractFromURL(url: URL): Promise<ExtractedSource> {
+export async function extractFromURL(url: URL, logger?: any): Promise<ExtractedSource> {
   if (looksLikeVideoURL(url)) {
-    const result = await extractFromVideoURL(url.toString());
+    const result = await extractFromVideoURL(url.toString(), logger);
     return {
       rawText: result.rawText,
       sourceHint: `Vídeo (${url.hostname}) — ${result.durationSeconds}s de áudio.`,

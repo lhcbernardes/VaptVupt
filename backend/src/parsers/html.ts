@@ -54,6 +54,30 @@ export function extractOpenGraph($: cheerio.CheerioAPI): {
 export function extractMainText($: cheerio.CheerioAPI, maxChars = 8000): string {
   const clone = $.root().clone();
   clone.find("script, style, nav, header, footer, aside, form, iframe").remove();
+
+  // Try to locate core recipe container first using high-probability selectors
+  const selectors = [
+    "article",
+    "main",
+    '[class*="recipe" i]',
+    '[class*="ingred" i]',
+    '[class*="prepar" i]',
+    '[class*="method" i]',
+    '[id*="recipe" i]',
+  ];
+
+  for (const selector of selectors) {
+    const el = clone.find(selector).first();
+    if (el.length) {
+      const txt = el.text().replace(/\s+/g, " ").trim();
+      // If we found a substantial text container, use it
+      if (txt.length > 200) {
+        return txt.slice(0, maxChars);
+      }
+    }
+  }
+
+  // Fallback to the entire cleaned page body text
   const text = clone.text().replace(/\s+/g, " ").trim();
   return text.slice(0, maxChars);
 }
