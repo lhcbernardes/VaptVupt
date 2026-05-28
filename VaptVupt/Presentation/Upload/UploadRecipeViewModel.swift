@@ -24,6 +24,7 @@ final class UploadRecipeViewModel {
     // MARK: - Dependências
 
     private let aiService: RecipeAIService
+    private let remoteParser: RemoteRecipeParser
     private let onSave: (Recipe) -> Void
 
     // MARK: - Estado do formulário
@@ -47,9 +48,11 @@ final class UploadRecipeViewModel {
 
     init(
         aiService: RecipeAIService = RecipeAIService(),
+        remoteParser: RemoteRecipeParser = RemoteRecipeParser(),
         onSave: @escaping (Recipe) -> Void
     ) {
         self.aiService = aiService
+        self.remoteParser = remoteParser
         self.onSave = onSave
     }
 
@@ -77,9 +80,10 @@ final class UploadRecipeViewModel {
         Task { await runParser(text: mockTranscript, source: .voice) }
     }
 
-    /// Processa um link colado pelo usuário. Se o link for um deep link
-    /// `vaptvupt://import?data=...` gerado por outro usuário do app, importa
-    /// diretamente sem chamar a IA. Caso contrário, simula a extração via LLM.
+    /// Processa um link colado pelo usuário. Tenta na ordem:
+    /// 1. Deep link `vaptvupt://import?data=...` → decodifica direto.
+    /// 2. Backend remoto (`RemoteRecipeParser`) → blog/Instagram/TikTok real.
+    /// 3. Fallback mock local (`RecipeAIService`).
     func triggerLinkParse() {
         if let url = RecipeShareService.extractImportURL(from: pastedLink),
            let imported = RecipeShareService.decode(from: url) {
@@ -87,10 +91,31 @@ final class UploadRecipeViewModel {
             return
         }
 
+        if remoteParser.isConfigured, !pastedLink.isEmpty {
+            Task { await runRemoteParser(url: pastedLink) }
+            return
+        }
+
         let text = pastedLink.isEmpty
             ? "Receita do link: Frango grelhado com brócolis, low carb, proteico. 30 minutos. 4 porções."
             : "Receita extraída do link \(pastedLink). 25 minutos, 2 porções. Almoço fit."
         Task { await runParser(text: text, source: .link) }
+    }
+
+    private func runRemoteParser(url: String) async {
+        await MainActor.run { aiState = .processing(.link) }
+        do {
+            let recipe = try await remoteParser.parse(url: url)
+            await MainActor.run { applyParsed(recipe) }
+        } catch RemoteRecipeParser.ParseError.http(_, _, let message) {
+            await MainActor.run {
+                aiState = .failed(message ?? "Não foi possível parsear o link.")
+            }
+        } catch {
+            await MainActor.run {
+                aiState = .failed("Falha ao chamar o servidor: \(error.localizedDescription)")
+            }
+        }
     }
 
     // MARK: - Ações de formulário
