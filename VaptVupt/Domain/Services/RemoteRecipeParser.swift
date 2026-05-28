@@ -138,7 +138,7 @@ private struct WireRecipe: Decodable {
             difficulty: RecipeDifficulty(rawValue: difficulty) ?? .easy,
             ingredients: ingredients.map { $0.toIngredient() },
             steps: steps.map { $0.toStep() },
-            dietaryRestrictions: dietaryRestrictions.compactMap { DietaryRestriction(rawValue: $0) }
+            dietaryRestrictions: dietaryRestrictions.compactMap { DietaryRestriction.fromAnyRawValue($0) }
         )
     }
 }

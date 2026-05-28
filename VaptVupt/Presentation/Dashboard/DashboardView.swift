@@ -327,9 +327,9 @@ struct DashboardView: View {
             HStack(spacing: Theme.Spacing.sm) {
                 ForEach(DietaryRestriction.allCases) { restriction in
                     TagPill(
-                        title: restriction.rawValue,
+                        title: restriction.displayName,
                         systemIcon: restriction.systemIcon,
-                        tint: restriction.accentColor,
+                        tint: restriction.tint,
                         isSelected: viewModel.dietaryFilters.contains(restriction),
                         isInteractive: true,
                         action: { viewModel.toggleDietary(restriction) }

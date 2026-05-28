@@ -166,9 +166,9 @@ struct RecipeDetailView: View {
                 HStack(spacing: Theme.Spacing.sm) {
                     ForEach(viewModel.recipe.dietaryRestrictions, id: \.self) { restriction in
                         TagPill(
-                            title: restriction.rawValue,
+                            title: restriction.displayName,
                             systemIcon: restriction.systemIcon,
-                            tint: restriction.accentColor
+                            tint: restriction.tint
                         )
                     }
                 }
