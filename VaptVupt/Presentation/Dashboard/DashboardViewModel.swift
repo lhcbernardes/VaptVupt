@@ -29,9 +29,9 @@ final class DashboardViewModel {
     var greeting: String {
         let hour = Calendar.current.component(.hour, from: Date())
         return switch hour {
-        case 5..<12:  "Bom dia"
-        case 12..<18: "Boa tarde"
-        default:      "Boa noite"
+        case 5..<12:  String(localized: "Bom dia")
+        case 12..<18: String(localized: "Boa tarde")
+        default:      String(localized: "Boa noite")
         }
     }
 

@@ -196,11 +196,14 @@ struct DashboardView: View {
 
     private var pantryCTASubtitle: String {
         let count = pantry.items.count
-        switch count {
-        case 0:  return "Adicione o que tem em casa pra ver sugestões"
-        case 1:  return "1 ingrediente cadastrado"
-        default: return "\(count) ingredientes cadastrados"
+        if count == 0 {
+            return String(localized: "Adicione o que tem em casa pra ver sugestões")
         }
+        // Pluralização simples — em pt/en/es a regra "1 vs >1" é equivalente.
+        let unit = count == 1
+            ? String(localized: "ingrediente cadastrado")
+            : String(localized: "ingredientes cadastrados")
+        return "\(count) \(unit)"
     }
 
     // MARK: - Planner & Improvise row
@@ -223,7 +226,7 @@ struct DashboardView: View {
         }
     }
 
-    private func shortcutCard(title: String, subtitle: String, icon: String, tint: Color, action: @escaping () -> Void) -> some View {
+    private func shortcutCard(title: LocalizedStringKey, subtitle: LocalizedStringKey, icon: String, tint: Color, action: @escaping () -> Void) -> some View {
         Button(action: action) {
             VStack(alignment: .leading, spacing: Theme.Spacing.sm) {
                 ZStack {

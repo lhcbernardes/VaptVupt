@@ -128,6 +128,7 @@
 				Domain/Services/RecipeShareService.swift,
 				Presentation/Components/RemoteImage.swift,
 				Presentation/Components/TagPill.swift,
+				"Presentation/Theme/DietaryRestriction+UI.swift",
 				Presentation/Theme/Theme.swift,
 			);
 			target = 00D8B9182FC6756800E77137 /* VaptVuptClip */;

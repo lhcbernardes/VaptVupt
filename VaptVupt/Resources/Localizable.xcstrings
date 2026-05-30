@@ -2,6 +2,186 @@
   "sourceLanguage" : "pt-BR",
   "version" : "1.0",
   "strings" : {
+    "≤ 15 min" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "≤ 15 min" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "≤ 15 min" } }
+      }
+    },
+    "≤ 30 min" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "≤ 30 min" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "≤ 30 min" } }
+      }
+    },
+    "≤ 1h" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "≤ 1h" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "≤ 1h" } }
+      }
+    },
+    "10 receitas no histórico" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "10 recipes in history" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "10 recetas en el historial" } }
+      }
+    },
+    "100 receitas no histórico" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "100 recipes in history" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "100 recetas en el historial" } }
+      }
+    },
+    "3 dias seguidos cozinhando" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "3 days cooking in a row" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "3 días cocinando seguidos" } }
+      }
+    },
+    "30 dias seguidos cozinhando" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "30 days cooking in a row" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "30 días cocinando seguidos" } }
+      }
+    },
+    "50 receitas no histórico" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "50 recipes in history" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "50 recetas en el historial" } }
+      }
+    },
+    "7 dias seguidos cozinhando" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "7 days cooking in a row" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "7 días cocinando seguidos" } }
+      }
+    },
+    "a gosto" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "to taste" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "al gusto" } }
+      }
+    },
+    "Abra um link de receita compartilhada para visualizar aqui." : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Open a shared recipe link to view it here." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Abre un enlace de receta compartida para verla aquí." } }
+      }
+    },
+    "Abre a tela da despensa." : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Opens the pantry screen." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Abre la pantalla de la despensa." } }
+      }
+    },
+    "Abre os detalhes da receita." : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Opens the recipe details." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Abre los detalles de la receta." } }
+      }
+    },
+    "Abrir no app completo" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Open in full app" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Abrir en la app completa" } }
+      }
+    },
+    "Ações" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Actions" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Acciones" } }
+      }
+    },
+    "Adequado para" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Suitable for" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Adecuado para" } }
+      }
+    },
+    "Adicionar" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Add" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Añadir" } }
+      }
+    },
+    "Adicionar aos favoritos" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Add to favorites" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Añadir a favoritos" } }
+      }
+    },
+    "Adicionar com IA" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Add with AI" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Añadir con IA" } }
+      }
+    },
+    "Adicionar ingrediente" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Add ingredient" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Añadir ingrediente" } }
+      }
+    },
+    "Adicionar timer extra" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Add extra timer" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Añadir temporizador extra" } }
+      }
+    },
+    "Adicione o que tem em casa (ou escaneie o rótulo) e veja na hora as receitas que você consegue fazer agora." : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Add what you have at home (or scan the label) and instantly see the recipes you can make right now." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Añade lo que tienes en casa (o escanea la etiqueta) y ve al instante las recetas que puedes hacer ahora." } }
+      }
+    },
+    "Adicione alguns ingredientes na Despensa pra eu poder sugerir." : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Add some ingredients in the Pantry so I can suggest." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Añade algunos ingredientes en la Despensa para que pueda sugerir." } }
+      }
+    },
+    "Adicione no Info.plist do app as chaves NSSpeechRecognitionUsageDescription e NSMicrophoneUsageDescription para usar comandos de voz no Modo Cozinha." : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Add the NSSpeechRecognitionUsageDescription and NSMicrophoneUsageDescription keys to the app's Info.plist to use voice commands in Cooking Mode." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Añade las claves NSSpeechRecognitionUsageDescription y NSMicrophoneUsageDescription al Info.plist de la app para usar comandos de voz en el Modo Cocina." } }
+      }
+    },
+    "Adicione NSCameraUsageDescription no Info.plist do app para usar o scanner da Despensa." : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Add NSCameraUsageDescription to the app's Info.plist to use the Pantry scanner." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Añade NSCameraUsageDescription al Info.plist de la app para usar el escáner de la Despensa." } }
+      }
+    },
+    "Adicione o que tem em casa pra ver sugestões" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Add what you have at home to see suggestions" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Añade lo que tienes en casa para ver sugerencias" } }
+      }
+    },
+    "Ajustes" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Settings" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Ajustes" } }
+      }
+    },
+    "Almoço" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Lunch" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Almuerzo" } }
+      }
+    },
+    "App completo não encontrado" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Full app not found" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "App completa no encontrada" } }
+      }
+    },
+    "Aparência" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Appearance" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Apariencia" } }
+      }
+    },
     "Apoiar o dev" : {
       "localizations" : {
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Tip the dev" } },
@@ -14,16 +194,34 @@
         "es" : { "stringUnit" : { "state" : "translated", "value" : "Apoya al desarrollador" } }
       }
     },
-    "Ajustes" : {
+    "Aponte para o rótulo do alimento" : {
       "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Settings" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Ajustes" } }
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Point at the food label" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Apunta a la etiqueta del alimento" } }
       }
     },
-    "Aparência" : {
+    "Ativas" : {
       "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Appearance" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Apariencia" } }
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Active" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Activas" } }
+      }
+    },
+    "Ative em Ajustes › SnapChef para receber alertas do timer." : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Enable in Settings › SnapChef to receive timer alerts." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Actívalas en Ajustes › SnapChef para recibir alertas del temporizador." } }
+      }
+    },
+    "Avisamos quando o timer do Modo Cozinha terminar." : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "We'll notify you when the Cooking Mode timer ends." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Te avisaremos cuando termine el temporizador del Modo Cocina." } }
+      }
+    },
+    "Banquete" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Banquet" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Banquete" } }
       }
     },
     "Bom dia" : {
@@ -44,16 +242,160 @@
         "es" : { "stringUnit" : { "state" : "translated", "value" : "Buenas noches" } }
       }
     },
+    "ingrediente cadastrado" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "ingredient saved" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "ingrediente guardado" } }
+      }
+    },
+    "ingredientes cadastrados" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "ingredients saved" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "ingredientes guardados" } }
+      }
+    },
+    "Buscar receita ou ingrediente" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Search recipe or ingredient" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Buscar receta o ingrediente" } }
+      }
+    },
+    "Café" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Coffee" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Café" } }
+      }
+    },
+    "Café da Manhã" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Breakfast" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Desayuno" } }
+      }
+    },
+    "Café da manhã" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Breakfast" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Desayuno" } }
+      }
+    },
+    "Câmera não configurada" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Camera not configured" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Cámara no configurada" } }
+      }
+    },
+    "Câmera não disponível" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Camera unavailable" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Cámara no disponible" } }
+      }
+    },
+    "Cancelar" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Cancel" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Cancelar" } }
+      }
+    },
+    "Cancelar timer" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Cancel timer" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Cancelar temporizador" } }
+      }
+    },
     "Cardápio da semana" : {
       "localizations" : {
         "en" : { "stringUnit" : { "state" : "translated", "value" : "This week's menu" } },
         "es" : { "stringUnit" : { "state" : "translated", "value" : "Menú de la semana" } }
       }
     },
+    "Carregando opções..." : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Loading options..." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Cargando opciones..." } }
+      }
+    },
     "Categorias" : {
       "localizations" : {
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Categories" } },
         "es" : { "stringUnit" : { "state" : "translated", "value" : "Categorías" } }
+      }
+    },
+    "Chef da casa" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "House chef" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Chef de la casa" } }
+      }
+    },
+    "Claro" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Light" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Claro" } }
+      }
+    },
+    "Cole o link da receita" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Paste the recipe link" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Pega el enlace de la receta" } }
+      }
+    },
+    "colher" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "tablespoon" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "cucharada" } }
+      }
+    },
+    "colher de chá" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "teaspoon" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "cucharadita" } }
+      }
+    },
+    "colheres" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "tablespoons" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "cucharadas" } }
+      }
+    },
+    "colheres de chá" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "teaspoons" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "cucharaditas" } }
+      }
+    },
+    "Com Álcool" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "With Alcohol" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Con Alcohol" } }
+      }
+    },
+    "Comandos de voz" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Voice commands" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Comandos de voz" } }
+      }
+    },
+    "Comandos de voz indisponíveis" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Voice commands unavailable" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Comandos de voz no disponibles" } }
+      }
+    },
+    "Começar a cozinhar" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Start cooking" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Empezar a cocinar" } }
+      }
+    },
+    "Começou bem" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Great start" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Buen comienzo" } }
+      }
+    },
+    "Compartilhar receita" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Share recipe" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Compartir receta" } }
       }
     },
     "Concluir" : {
@@ -68,6 +410,198 @@
         "es" : { "stringUnit" : { "state" : "translated", "value" : "Logros" } }
       }
     },
+    "Conta" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Account" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Cuenta" } }
+      }
+    },
+    "Cozinhar" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Cook" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Cocinar" } }
+      }
+    },
+    "Cozinheiro do mês" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Cook of the month" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Cocinero del mes" } }
+      }
+    },
+    "Curtindo o app?" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Enjoying the app?" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "¿Te gusta la app?" } }
+      }
+    },
+    "De nada" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "You're welcome" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "De nada" } }
+      }
+    },
+    "Deixe a inteligência artificial estruturar a receita para você." : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Let AI structure the recipe for you." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Deja que la IA estructure la receta por ti." } }
+      }
+    },
+    "Desativadas no iOS" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Disabled in iOS" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Desactivadas en iOS" } }
+      }
+    },
+    "Descartar" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Discard" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Descartar" } }
+      }
+    },
+    "Descreva o passo" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Describe the step" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Describe el paso" } }
+      }
+    },
+    "Despensa inteligente" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Smart pantry" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Despensa inteligente" } }
+      }
+    },
+    "Despensa vazia" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Empty pantry" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Despensa vacía" } }
+      }
+    },
+    "Difícil" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Hard" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Difícil" } }
+      }
+    },
+    "Doação simbólica — escolha o tamanho." : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Symbolic donation — pick the size." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Donación simbólica — elige el tamaño." } }
+      }
+    },
+    "Drinks & Bebidas" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Drinks & Beverages" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Tragos y Bebidas" } }
+      }
+    },
+    "Escanear Despensa" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Scan Pantry" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Escanear Despensa" } }
+      }
+    },
+    "Escolher receita" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Choose recipe" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Elegir receta" } }
+      }
+    },
+    "Escuro" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Dark" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Oscuro" } }
+      }
+    },
+    "Espaço Fit" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Fit Space" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Espacio Fit" } }
+      }
+    },
+    "Este recurso requer iOS 16+ e um aparelho com câmera traseira compatível." : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "This feature requires iOS 16+ and a device with a compatible rear camera." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Esta función requiere iOS 16+ y un dispositivo con cámara trasera compatible." } }
+      }
+    },
+    "Ex: Frango grelhado fit" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "E.g.: Healthy grilled chicken" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Ej.: Pollo fit a la plancha" } }
+      }
+    },
+    "Fácil" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Easy" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Fácil" } }
+      }
+    },
+    "Fechar" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Close" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Cerrar" } }
+      }
+    },
+    "g" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "g" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "g" } }
+      }
+    },
+    "Gerar Lista de Compras" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Generate Shopping List" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Generar Lista de Compras" } }
+      }
+    },
+    "Histórico" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "History" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Historial" } }
+      }
+    },
+    "Hoje" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Today" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Hoy" } }
+      }
+    },
+    "Imperial" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Imperial" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Imperial" } }
+      }
+    },
+    "Importar" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Import" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Importar" } }
+      }
+    },
+    "Improvisar receita" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Improvise recipe" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Improvisar receta" } }
+      }
+    },
+    "Improvisando uma receita…" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Improvising a recipe…" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Improvisando una receta…" } }
+      }
+    },
+    "Indisponíveis" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Unavailable" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "No disponibles" } }
+      }
+    },
+    "Iniciante" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Beginner" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Principiante" } }
+      }
+    },
     "Iniciar Modo Cozinha" : {
       "localizations" : {
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Start Cooking Mode" } },
@@ -80,10 +614,76 @@
         "es" : { "stringUnit" : { "state" : "translated", "value" : "Inicio" } }
       }
     },
+    "Ingrediente" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Ingredient" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Ingrediente" } }
+      }
+    },
     "Ingredientes" : {
       "localizations" : {
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Ingredients" } },
         "es" : { "stringUnit" : { "state" : "translated", "value" : "Ingredientes" } }
+      }
+    },
+    "Jantar" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Dinner" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Cena" } }
+      }
+    },
+    "kg" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "kg" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "kg" } }
+      }
+    },
+    "l" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "l" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "l" } }
+      }
+    },
+    "Lanche" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Snack" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Merienda" } }
+      }
+    },
+    "Limpar" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Clear" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Limpiar" } }
+      }
+    },
+    "Lista de Compras" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Shopping List" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Lista de Compras" } }
+      }
+    },
+    "Low Carb" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Low Carb" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Bajo en Carbos" } }
+      }
+    },
+    "Médio" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Medium" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Medio" } }
+      }
+    },
+    "Métrico" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Metric" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Métrico" } }
+      }
+    },
+    "Minha anotação" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "My note" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Mi nota" } }
       }
     },
     "Minha Despensa" : {
@@ -92,10 +692,22 @@
         "es" : { "stringUnit" : { "state" : "translated", "value" : "Mi Despensa" } }
       }
     },
-    "Modo Improviso" : {
+    "ml" : {
       "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Improvise Mode" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Modo Improvisar" } }
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "ml" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "ml" } }
+      }
+    },
+    "MODO COZINHA" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "COOKING MODE" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "MODO COCINA" } }
+      }
+    },
+    "Modo cozinha mãos livres" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Hands-free cooking mode" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Modo cocina manos libres" } }
       }
     },
     "Modo de preparo" : {
@@ -104,10 +716,82 @@
         "es" : { "stringUnit" : { "state" : "translated", "value" : "Preparación" } }
       }
     },
+    "Modo Improviso" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Improvise Mode" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Modo Improvisar" } }
+      }
+    },
+    "Modo improviso" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Improvise mode" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Modo improvisar" } }
+      }
+    },
+    "Planejar refeições" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Plan meals" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Planificar comidas" } }
+      }
+    },
+    "Sugerir da despensa" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Suggest from pantry" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Sugerir desde la despensa" } }
+      }
+    },
+    "Modo mãos livres" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Hands-free mode" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Modo manos libres" } }
+      }
+    },
+    "MVP — versão 0.1" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "MVP — version 0.1" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "MVP — versión 0.1" } }
+      }
+    },
+    "Nada adicionado ainda…" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Nothing added yet…" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Nada añadido aún…" } }
+      }
+    },
+    "Nenhuma receita aqui ainda." : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "No recipe here yet." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Ninguna receta aquí todavía." } }
+      }
+    },
+    "Nenhuma receita nesse filtro de tempo." : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "No recipe in this time filter." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Ninguna receta en este filtro de tiempo." } }
+      }
+    },
+    "Nome do timer (ex: molho)" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Timer name (e.g.: sauce)" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Nombre del temporizador (ej.: salsa)" } }
+      }
+    },
+    "Notificações" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Notifications" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Notificaciones" } }
+      }
+    },
     "Nova Receita" : {
       "localizations" : {
         "en" : { "stringUnit" : { "state" : "translated", "value" : "New Recipe" } },
         "es" : { "stringUnit" : { "state" : "translated", "value" : "Nueva Receta" } }
+      }
+    },
+    "Novo timer paralelo" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "New parallel timer" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Nuevo temporizador paralelo" } }
       }
     },
     "O que vai cozinhar hoje?" : {
@@ -116,10 +800,70 @@
         "es" : { "stringUnit" : { "state" : "translated", "value" : "¿Qué vas a cocinar hoy?" } }
       }
     },
+    "OK" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "OK" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "OK" } }
+      }
+    },
+    "Outra sugestão" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Another suggestion" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Otra sugerencia" } }
+      }
+    },
+    "Outras formas de apoiar" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Other ways to support" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Otras formas de apoyar" } }
+      }
+    },
     "Pagar um café para o dev" : {
       "localizations" : {
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Buy the dev a coffee" } },
         "es" : { "stringUnit" : { "state" : "translated", "value" : "Invitar un café al dev" } }
+      }
+    },
+    "Para abrir a receita no app completo, instale o VaptVupt na App Store ou rode o esquema do app principal no simulador." : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "To open the recipe in the full app, install VaptVupt from the App Store or run the main app scheme in the simulator." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Para abrir la receta en la app completa, instala VaptVupt desde la App Store o ejecuta el esquema de la app principal en el simulador." } }
+      }
+    },
+    "Passe a mão por cima da câmera ou diga 'próximo' para avançar. O timer continua na Lock Screen e Dynamic Island." : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Wave your hand over the camera or say 'next' to advance. The timer keeps running on the Lock Screen and Dynamic Island." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Pasa la mano sobre la cámara o di 'siguiente' para avanzar. El temporizador sigue en la Lock Screen y Dynamic Island." } }
+      }
+    },
+    "Passo anterior" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Previous step" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Paso anterior" } }
+      }
+    },
+    "Permitir" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Allow" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Permitir" } }
+      }
+    },
+    "Permitir notificações" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Allow notifications" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Permitir notificaciones" } }
+      }
+    },
+    "pitada" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "pinch" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "pizca" } }
+      }
+    },
+    "pitadas" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "pinches" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "pizcas" } }
       }
     },
     "Porções" : {
@@ -128,10 +872,64 @@
         "es" : { "stringUnit" : { "state" : "translated", "value" : "Porciones" } }
       }
     },
-    "Pronto pra fazer" : {
+    "porções" : {
       "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Ready to cook" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Listo para cocinar" } }
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "servings" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "porciones" } }
+      }
+    },
+    "preparos registrados" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "preparations logged" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "preparaciones registradas" } }
+      }
+    },
+    "Prato pronto! 🎉" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Dish ready! 🎉" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "¡Plato listo! 🎉" } }
+      }
+    },
+    "Proteico" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "High Protein" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Proteico" } }
+      }
+    },
+    "Próximo" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Next" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Siguiente" } }
+      }
+    },
+    "Próximo passo" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Next step" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Paso siguiente" } }
+      }
+    },
+    "Pular" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Skip" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Saltar" } }
+      }
+    },
+    "Qtd" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Qty" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Cant." } }
+      }
+    },
+    "Quer registrar uma foto do seu prato?" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Want to take a photo of your dish?" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "¿Quieres registrar una foto de tu plato?" } }
+      }
+    },
+    "Receba um aviso quando o timer terminar." : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Get a notification when the timer ends." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Recibe un aviso cuando termine el temporizador." } }
       }
     },
     "RECEITA DO DIA" : {
@@ -140,10 +938,112 @@
         "es" : { "stringUnit" : { "state" : "translated", "value" : "RECETA DEL DÍA" } }
       }
     },
-    "Seus Favoritos" : {
+    "Receita Recebida" : {
       "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Your Favorites" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Tus Favoritos" } }
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Recipe Received" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Receta Recibida" } }
+      }
+    },
+    "Receita compartilhada" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Shared recipe" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Receta compartida" } }
+      }
+    },
+    "receitas" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "recipes" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "recetas" } }
+      }
+    },
+    "Refeições" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Meals" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Comidas" } }
+      }
+    },
+    "Remover dos favoritos" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Remove from favorites" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Quitar de favoritos" } }
+      }
+    },
+    "Resumo curto da receita" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Short recipe summary" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Resumen corto de la receta" } }
+      }
+    },
+    "Sair do Modo Cozinha" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Exit Cooking Mode" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Salir del Modo Cocina" } }
+      }
+    },
+    "Salvar" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Save" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Guardar" } }
+      }
+    },
+    "Sem Açúcar" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Sugar Free" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Sin Azúcar" } }
+      }
+    },
+    "Sem Álcool" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Non-Alcoholic" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Sin Alcohol" } }
+      }
+    },
+    "Sem Glúten" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gluten Free" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Sin Gluten" } }
+      }
+    },
+    "Sem Lactose" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Lactose Free" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Sin Lactosa" } }
+      }
+    },
+    "Semana cheia" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Full week" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Semana completa" } }
+      }
+    },
+    "Semana de" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Week of" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Semana del" } }
+      }
+    },
+    "Seu apoio mantém o VaptVupt vivo e em evolução." : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Your support keeps VaptVupt alive and evolving." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Tu apoyo mantiene a VaptVupt vivo y en evolución." } }
+      }
+    },
+    "Sistema" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "System" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Sistema" } }
+      }
+    },
+    "Sistema de unidades" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Unit system" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Sistema de unidades" } }
+      }
+    },
+    "SnapChef" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "SnapChef" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "SnapChef" } }
       }
     },
     "Sobre" : {
@@ -152,22 +1052,208 @@
         "es" : { "stringUnit" : { "state" : "translated", "value" : "Acerca de" } }
       }
     },
+    "Sortear uma receita do acervo" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Pick a random recipe from the catalog" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Sortea una receta del catálogo" } }
+      }
+    },
+    "Sorteia uma receita aleatória do acervo." : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Picks a random recipe from the catalog." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Sortea una receta aleatoria del catálogo." } }
+      }
+    },
+    "Sua despensa" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Your pantry" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Tu despensa" } }
+      }
+    },
+    "Sua despensa está vazia." : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Your pantry is empty." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Tu despensa está vacía." } }
+      }
+    },
+    "Sugestão a partir da despensa" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Suggestion from the pantry" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Sugerencia desde la despensa" } }
+      }
+    },
+    "Sugestões" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Suggestions" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Sugerencias" } }
+      }
+    },
     "Surpreenda-me" : {
       "localizations" : {
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Surprise me" } },
         "es" : { "stringUnit" : { "state" : "translated", "value" : "Sorpréndeme" } }
       }
     },
-    "Todas as receitas" : {
+    "Tentar de novo" : {
       "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "All recipes" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Todas las recetas" } }
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Try again" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Intentar de nuevo" } }
       }
     },
-    "Você cozinhou recentemente" : {
+    "Timer extra" : {
       "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "You cooked recently" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Cocinaste recientemente" } }
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Extra timer" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Temporizador extra" } }
+      }
+    },
+    "Tire foto, dite por voz ou cole um link. A inteligência estrutura a receita inteira em segundos." : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Take a photo, dictate or paste a link. AI structures the whole recipe in seconds." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Toma una foto, dicta o pega un enlace. La IA estructura la receta entera en segundos." } }
+      }
+    },
+    "Todos" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "All" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Todos" } }
+      }
+    },
+    "Toque duplo para abrir a receita." : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Double tap to open the recipe." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Doble toque para abrir la receta." } }
+      }
+    },
+    "Toque duplo para ver todas as receitas." : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Double tap to see all recipes." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Doble toque para ver todas las recetas." } }
+      }
+    },
+    "Toque para alternar entre métrico e imperial." : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Tap to switch between metric and imperial." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Toca para alternar entre métrico e imperial." } }
+      }
+    },
+    "Toque para escolher" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Tap to choose" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Toca para elegir" } }
+      }
+    },
+    "Um banquete pra celebrar este app." : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "A banquet to celebrate this app." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Un banquete para celebrar esta app." } }
+      }
+    },
+    "Um cafezinho pra agradecer." : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "A little coffee to say thanks." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Un cafecito para agradecer." } }
+      }
+    },
+    "Um jantar pra fechar o dia bem." : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "A dinner to close the day well." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Una cena para cerrar el día bien." } }
+      }
+    },
+    "Um lanche pra ajudar a manter o dev acordado." : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "A snack to help keep the dev awake." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Una merienda para ayudar a mantener al dev despierto." } }
+      }
+    },
+    "unidade" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "unit" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "unidad" } }
+      }
+    },
+    "unidades" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "units" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "unidades" } }
+      }
+    },
+    "Upload com IA" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "AI Upload" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Subida con IA" } }
+      }
+    },
+    "Usamos o que você tem em casa para improvisar uma receita rápida." : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "We use what you have at home to improvise a quick recipe." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Usamos lo que tienes en casa para improvisar una receta rápida." } }
+      }
+    },
+    "Útil para acompanhar duas partes da receita ao mesmo tempo. Sem Live Activity nem notificação local." : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Useful to track two parts of the recipe at once. No Live Activity or local notification." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Útil para seguir dos partes de la receta a la vez. Sin Live Activity ni notificación local." } }
+      }
+    },
+    "Variações, ajustes de sal, dicas que você descobriu cozinhando…" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Variations, salt tweaks, tips you discovered while cooking…" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Variaciones, ajustes de sal, consejos que descubriste cocinando…" } }
+      }
+    },
+    "Vegano" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Vegan" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Vegano" } }
+      }
+    },
+    "Vegetariano" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Vegetarian" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Vegetariano" } }
+      }
+    },
+    "Ver todas" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "See all" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Ver todas" } }
+      }
+    },
+    "Veterano" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Veteran" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Veterano" } }
+      }
+    },
+    "VaptVupt" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "VaptVupt" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "VaptVupt" } }
+      }
+    },
+    "VaptVupt App Clip" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "VaptVupt App Clip" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "VaptVupt App Clip" } }
+      }
+    },
+    "VaptVupt é mantido por um desenvolvedor independente. Se ele te ajudou na cozinha, um cafezinho de incentivo cai super bem." : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "VaptVupt is built by an independent developer. If it helped you in the kitchen, a little coffee of encouragement goes a long way." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "VaptVupt es mantenido por un desarrollador independiente. Si te ayudó en la cocina, un cafecito de aliento viene muy bien." } }
+      }
+    },
+    "xícara" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "cup" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "taza" } }
+      }
+    },
+    "xícaras" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "cups" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "tazas" } }
       }
     }
   }

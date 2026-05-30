@@ -25,7 +25,7 @@ struct RootTabView: View {
         case upload
         case settings
 
-        var label: String {
+        var label: LocalizedStringKey {
             switch self {
             case .home:     "Início"
             case .upload:   "Adicionar"

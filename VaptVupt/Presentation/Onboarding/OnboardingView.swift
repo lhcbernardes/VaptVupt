@@ -153,11 +153,11 @@ struct OnboardingView: View {
 
 // MARK: - Page model
 
-private struct OnboardingPage: Hashable {
+private struct OnboardingPage {
     let icon: String
     let tint: Color
-    let title: String
-    let subtitle: String
+    let title: LocalizedStringKey
+    let subtitle: LocalizedStringKey
 }
 
 #Preview {
