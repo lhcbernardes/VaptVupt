@@ -560,6 +560,18 @@
         "es" : { "stringUnit" : { "state" : "translated", "value" : "Historial" } }
       }
     },
+    "Idioma" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Language" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Idioma" } }
+      }
+    },
+    "Idioma: %@" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Language: %@" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Idioma: %@" } }
+      }
+    },
     "Hoje" : {
       "localizations" : {
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Today" } },

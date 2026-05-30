@@ -12,6 +12,7 @@ import UserNotifications
 
 struct SettingsView: View {
     @AppStorage("snapchef.appearance") private var appearance: AppearanceMode = .system
+    @AppStorage("vaptvupt.language") private var language: AppLanguage = .system
     @Environment(NotificationService.self) private var notifications
     @Environment(\.modelContext) private var modelContext
 
@@ -24,6 +25,7 @@ struct SettingsView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: Theme.Spacing.lg) {
                     achievementsSection
+                    languageSection
                     appearanceSection
                     notificationsSection
                     historySection
@@ -42,6 +44,52 @@ struct SettingsView: View {
     }
 
     // MARK: - Sections
+
+    private var languageSection: some View {
+        section(title: "Idioma") {
+            VStack(spacing: 0) {
+                ForEach(AppLanguage.allCases) { lang in
+                    languageRow(lang)
+                    if lang != AppLanguage.allCases.last {
+                        Divider().padding(.leading, Theme.Spacing.xxl)
+                    }
+                }
+            }
+            .background(
+                RoundedRectangle(cornerRadius: Theme.Radius.medium, style: .continuous)
+                    .fill(Theme.Colors.surface)
+            )
+        }
+    }
+
+    private func languageRow(_ lang: AppLanguage) -> some View {
+        Button {
+            withAnimation(.easeInOut(duration: 0.2)) {
+                language = lang
+            }
+        } label: {
+            HStack(spacing: Theme.Spacing.md) {
+                Image(systemName: "globe")
+                    .font(.callout)
+                    .foregroundStyle(Theme.Colors.accent)
+                    .frame(width: 28)
+                Text(lang.displayName)
+                    .font(Theme.Typography.body)
+                    .foregroundStyle(Theme.Colors.primaryText)
+                Spacer()
+                if language == lang {
+                    Image(systemName: "checkmark")
+                        .font(.callout.weight(.semibold))
+                        .foregroundStyle(Theme.Colors.accent)
+                }
+            }
+            .padding(Theme.Spacing.md)
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("Idioma: \(lang.displayName)")
+        .accessibilityAddTraits(language == lang ? [.isSelected] : [])
+    }
 
     private var appearanceSection: some View {
         section(title: "Aparência") {

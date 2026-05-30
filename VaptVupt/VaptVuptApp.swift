@@ -20,6 +20,7 @@ struct VaptVuptApp: App {
 
     @AppStorage("snapchef.appearance") private var appearance: AppearanceMode = .system
     @AppStorage("vaptvupt.hasSeenOnboarding") private var hasSeenOnboarding: Bool = false
+    @AppStorage("vaptvupt.language") private var language: AppLanguage = .system
 
     /// Container SwiftData usado para o histórico de preparos
     /// (`CookedRecipeEntry`), anotações pessoais (`RecipeNote`) e o meal
@@ -72,6 +73,7 @@ struct VaptVuptApp: App {
             .modelContainer(modelContainer)
             .tint(Theme.Colors.accent)
             .preferredColorScheme(appearance.colorScheme)
+            .environment(\.locale, language.locale ?? Locale.current)
         }
     }
 }
